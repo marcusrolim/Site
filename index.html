@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121212">
+
+  <title>Marcus Rolim | Gestão, Educação e Tecnologia</title>
+  <meta name="description" content="Toda boa solução começa pela compreensão do problema. A tecnologia vem depois. Portal profissional de Marcus Rolim unindo gestão, educação e tecnologia.">
+  <meta name="author" content="Marcus Rolim">
+  <link rel="canonical" href="https://marcusrolim.com.br/">
+
+  <!-- Open Graph / Redes Sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marcusrolim.com.br/">
+  <meta property="og:title" content="Marcus Rolim | Gestão, Educação e Tecnologia">
+  <meta property="og:description" content="Toda boa solução começa pela compreensão do problema. A tecnologia vem depois.">
+  <meta property="og:image" content="assets/images/logo-marcus-rolim.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/favicon.ico">
+
+  <!-- Fontes do Google (Fallbacks progressivos de alta qualidade) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Onest:wght@400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos Organizáveis e Modulares (CSS Puro sem Tailwind) -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body class="bg-tech-glow">
+
+  <!-- Camada de Fundo Tecnológico Oficial MR com Circuitos -->
+  <div class="site-bg-overlay" aria-hidden="true"></div>
+
+  <!-- Canvas Tecnológico Global com Nós Digitais Interativos em toda a rolagem -->
+  <canvas id="global-tech-canvas" class="global-tech-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================================== HEADER -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="site-logo" aria-label="Marcus Rolim — Início">
+        <img src="assets/images/logo-marcus-rolim.png" alt="Marcus Rolim" class="brand-logo-img">
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="nav-desktop" aria-label="Navegação Principal">
+        <a href="index.html" class="is-active">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+
+      <!-- CTA Desktop -->
+      <div class="header-cta-wrap">
+        <a href="contato.html" class="btn-ghost" style="height: 40px; padding: 0 1.25rem; font-size: 0.9rem;">
+          Vamos conversar<span class="btn-dot" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button type="button" class="btn-hamburger" id="btn-hamburger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu de navegação">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu Sheet Mobile (Drawer) -->
+  <nav id="mobile-nav" class="nav-mobile-sheet" aria-label="Menu Mobile" aria-hidden="true">
+    <a href="index.html" class="is-active">Início</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+    <div style="margin-top: 0.5rem;">
+      <a href="contato.html" class="btn-ghost" style="display: flex; justify-content: center; width: 100%;">
+        Vamos conversar<span class="btn-dot" aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="conteudo-principal">
+
+    <!-- ============================================================ HERO (DOBRA 1) -->
+    <section class="section section-hero" aria-label="Apresentação Principal">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Coluna 1: Conteúdo Editorial (55-60%) -->
+          <div class="hero-copy reveal-on-scroll">
+            <div>
+              <span class="tag-badge">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                Gestão · Educação · Tecnologia
+              </span>
+            </div>
+
+            <h1 class="hero-headline">
+              Toda boa solução começa pela <strong>compreensão do problema</strong>.
+              <span class="headline-coral">A tecnologia vem depois.</span>
+            </h1>
+
+            <p class="hero-subtext">
+              Cada pessoa e cada organização possuem necessidades, objetivos e desafios diferentes.
+              Antes de escolher uma ferramenta, é preciso compreender a realidade, organizar as possibilidades e então decidir qual solução faz sentido.
+            </p>
+
+            <div class="hero-actions">
+              <!-- CTA 1: Leva ao Bloco 4 -->
+              <a href="#como-posso-ajudar" class="btn-cta-tile">
+                <span class="cta-label">Como posso ajudar</span>
+                <span class="cta-tile">
+                  <img src="assets/images/send-icon.svg" alt="" width="16" height="16" aria-hidden="true">
+                </span>
+              </a>
+
+              <!-- CTA 2: Leva para /sobre -->
+              <a href="sobre.html" class="btn-ghost">
+                Conheça meu trabalho<span class="btn-dot" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Fotografia Profissional (40-45%) -->
+          <div class="hero-media-wrapper reveal-on-scroll">
+            <div class="hero-card-frame">
+              <div class="hero-image-box">
+                <img src="assets/images/marcus-rolim-hero.png" alt="Fotografia de Marcus Rolim — atuação profissional em Gestão, Educação e Tecnologia">
+                <div class="hero-photo-tag">
+                  <img src="assets/images/logo-marcus-rolim.png" alt="Marcus Rolim" class="hero-photo-logo-img">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ BLOCO 2 — EDITORIAL DA PRÁTICA -->
+    <section class="section section-editorial" aria-labelledby="titulo-bloco-pratica">
+      <div class="container">
+        <div class="editorial-grid">
+          <div class="editorial-header reveal-on-scroll">
+            <span class="tag-badge">Origem & Método</span>
+            <h2 id="titulo-bloco-pratica">Essa forma de pensar nasceu da prática.</h2>
+          </div>
+
+          <div class="editorial-body reveal-on-scroll">
+            <p>
+              Ao longo da minha trajetória, atuei em áreas diferentes, mas sempre com o mesmo objetivo: compreender problemas, organizar soluções e entregar resultados.
+            </p>
+            <p>
+              Foi assim desenvolvendo cursos, estruturando processos, criando ferramentas, implantando automações e trabalhando com educação e tecnologia.
+            </p>
+            <p>
+              Essas experiências mostraram que nenhuma ferramenta resolve um problema sozinha.
+            </p>
+            <p>
+              Antes de qualquer tecnologia, existe uma situação que precisa ser compreendida, pessoas que precisam ser consideradas e decisões que precisam fazer sentido para a realidade de quem irá utilizá-las.
+            </p>
+
+            <div class="editorial-highlight-box">
+              <p>“Foi essa experiência que definiu a forma como trabalho até hoje.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ BLOCO 3 — COMO FUNCIONA NA PRÁTICA -->
+    <section class="section section-process" aria-labelledby="titulo-bloco-processo">
+      <div class="container">
+        <div class="section-process-intro reveal-on-scroll">
+          <span class="tag-badge">Lógica de Trabalho</span>
+          <h2 id="titulo-bloco-processo">Como isso funciona na prática?</h2>
+          <p style="max-width: 64ch; margin-top: 0.5rem; font-size: 1.1rem;">
+            Cada situação exige um caminho diferente, mas a forma de trabalhar segue uma lógica simples:
+          </p>
+        </div>
+
+        <div class="process-timeline">
+          <!-- 01 COMPREENDER -->
+          <article class="process-card reveal-on-scroll">
+            <div class="process-num">01</div>
+            <h3 class="process-title">Compreender</h3>
+            <p class="process-desc">
+              Entender a situação, as pessoas envolvidas, o problema e o resultado que se pretende alcançar.
+            </p>
+          </article>
+
+          <!-- 02 ORGANIZAR -->
+          <article class="process-card reveal-on-scroll">
+            <div class="process-num">02</div>
+            <h3 class="process-title">Organizar</h3>
+            <p class="process-desc">
+              Separar causas de sintomas, reunir as informações necessárias e identificar limitações, recursos e possibilidades.
+            </p>
+          </article>
+
+          <!-- 03 PLANEJAR -->
+          <article class="process-card reveal-on-scroll">
+            <div class="process-num">03</div>
+            <h3 class="process-title">Planejar</h3>
+            <p class="process-desc">
+              Definir um caminho viável e decidir quais conhecimentos, processos e tecnologias podem contribuir para a solução.
+            </p>
+          </article>
+
+          <!-- 04 EXECUTAR -->
+          <article class="process-card reveal-on-scroll">
+            <div class="process-num">04</div>
+            <h3 class="process-title">Executar</h3>
+            <p class="process-desc">
+              Colocar a solução em prática, seja por meio de uma ferramenta, automação, sistema, processo, capacitação ou outra abordagem adequada.
+            </p>
+          </article>
+
+          <!-- 05 EVOLUIR -->
+          <article class="process-card reveal-on-scroll">
+            <div class="process-num">05</div>
+            <h3 class="process-title">Evoluir</h3>
+            <p class="process-desc">
+              Observar os resultados, identificar o que funcionou e ajustar o que pode ser melhorado.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ BLOCO 4 — SITUAÇÕES DE AJUDA -->
+    <section class="section section-situations" id="como-posso-ajudar" aria-labelledby="titulo-bloco-ajuda">
+      <div class="container">
+        <div class="reveal-on-scroll">
+          <span class="tag-badge">Atuação Profissional</span>
+          <h2 id="titulo-bloco-ajuda">Em quais situações posso ajudar?</h2>
+          <p style="max-width: 68ch; margin-top: 0.5rem; font-size: 1.1rem;">
+            Nem sempre o problema está em não ter uma ferramenta. Muitas vezes, o primeiro passo é entender o que precisa ser resolvido e qual caminho faz sentido.
+          </p>
+        </div>
+
+        <div class="situations-grid">
+          <!-- 01 -->
+          <article class="situation-card reveal-on-scroll">
+            <div class="situation-header">
+              <span class="situation-num">01</span>
+              <h3 class="situation-title">Quero entender como a tecnologia pode ser útil para mim ou para minha organização</h3>
+            </div>
+            <p class="situation-desc">
+              Quando existe uma necessidade, mas ainda não está claro qual ferramenta, processo ou caminho faz sentido.
+            </p>
+          </article>
+
+          <!-- 02 -->
+          <article class="situation-card reveal-on-scroll">
+            <div class="situation-header">
+              <span class="situation-num">02</span>
+              <h3 class="situation-title">Quero melhorar ou organizar um processo</h3>
+            </div>
+            <p class="situation-desc">
+              Quando atividades estão demoradas, repetitivas, desorganizadas ou dependentes demais de trabalho manual.
+            </p>
+          </article>
+
+          <!-- 03 -->
+          <article class="situation-card reveal-on-scroll">
+            <div class="situation-header">
+              <span class="situation-num">03</span>
+              <h3 class="situation-title">Tenho um problema e preciso desenvolver uma solução</h3>
+            </div>
+            <p class="situation-desc">
+              Quando a necessidade pode resultar em uma ferramenta, automação, sistema, chatbot, dashboard ou outra solução que possa ser planejada e executada.
+            </p>
+          </article>
+
+          <!-- 04 -->
+          <article class="situation-card reveal-on-scroll">
+            <div class="situation-header">
+              <span class="situation-num">04</span>
+              <h3 class="situation-title">Quero preparar pessoas para utilizar novas tecnologias</h3>
+            </div>
+            <p class="situation-desc">
+              Cursos, treinamentos, palestras e atividades voltados à compreensão e ao uso consciente de tecnologia e inteligência artificial.
+            </p>
+          </article>
+
+          <!-- 05 -->
+          <article class="situation-card reveal-on-scroll">
+            <div class="situation-header">
+              <span class="situation-num">05</span>
+              <h3 class="situation-title">Quero estruturar um projeto educacional ou tecnológico</h3>
+            </div>
+            <p class="situation-desc">
+              Planejamento de cursos, materiais, atividades, processos e projetos que precisem unir conhecimento, organização e tecnologia.
+            </p>
+          </article>
+        </div>
+
+        <!-- CTA discreto ao final direcionando para /contato -->
+        <div class="situations-cta-bar reveal-on-scroll">
+          <p>Identificou um desafio similar em sua realidade?</p>
+          <a href="contato.html" class="btn-ghost" style="border-color: var(--color-primary-border); color: var(--color-primary);">
+            Vamos conversar<span class="btn-dot" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================== FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo footer-logo" style="width: fit-content;" aria-label="Marcus Rolim — Início">
+            <img src="assets/images/logo-marcus-rolim.png" alt="Marcus Rolim" class="footer-logo-img">
+          </a>
+
+          <p class="footer-quote">
+            “Toda tecnologia precisa ser traduzida para a realidade de quem vai utilizá-la.”
+          </p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div>
+            <span class="footer-col-title">Navegação</span>
+            <ul class="footer-nav-list">
+              <li><a href="index.html">Início</a></li>
+              <li><a href="sobre.html">Sobre</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <span class="footer-col-title">Canais Diretos</span>
+            <ul class="footer-nav-list">
+              <li>
+                <a href="mailto:contato@marcusrolim.com.br">contato@marcusrolim.com.br</a>
+              </li>
+              <li>
+                <a href="https://wa.me/5567999721850?text=Ol%C3%A1%2C%20Marcus.%20Encontrei%20seu%20contato%20pelo%20site%20marcusrolim.com.br%20e%20gostaria%20de%20conversar%20sobre%20uma%20situa%C3%A7%C3%A3o%2Fprojeto." target="_blank" rel="noopener noreferrer">
+                  WhatsApp (+55 67 99972-1850) ↗
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/marcus-rolim-10b79232b/" target="_blank" rel="noopener noreferrer">
+                  LinkedIn ↗
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/marcusphotonrolim/" target="_blank" rel="noopener noreferrer">
+                  Instagram ↗
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © <span id="footer-year">2026</span> Marcus Rolim. Todos os direitos reservados.
+        </div>
+        <div style="font-family: var(--font-mono); color: var(--color-text-subtle);">
+          marcusrolim.com.br
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Interativos -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

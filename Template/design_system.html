@@ -1,0 +1,3127 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#121212">
+<title>Marcus Rolim â€” Design System & Living Interface</title>
+<meta name="description" content="Design System oficial para o portal marcusrolim.com.br. GestÃ£o, EducaÃ§Ã£o e Tecnologia.">
+<!-- Favicons e fontes locais do repositÃ³rio -->
+<link rel="icon" href="assets/overview/assets/images/favicon.ico">
+<link rel="icon" href="assets/overview/assets/images/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/overview/assets/images/apple-icon-180x180.png" sizes="180x180" type="image/png">
+<link rel="stylesheet" href="assets/overview/assets/css/fonts.css">
+<link rel="stylesheet" href="assets/overview/assets/css/main.css">
+<!-- Fallback progressivo de fontes para mÃ¡xima fidelidade -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..700;1,300..700&family=Onest:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ================================================================
+   MARCUS ROLIM DESIGN SYSTEM â€” TOKENS FUNDAMENTAIS
+   GestÃ£o + EducaÃ§Ã£o + Tecnologia.
+   EstÃ©tica Dark, TecnolÃ³gica, Editorial, SÃ³bria e Humana.
+   ================================================================ */
+:root {
+  /* Cores Centrais da Marca MR */
+  --color-background: #121212;
+  --color-surface: #2E2E2E;
+  --color-primary: #FF695B;
+  --color-text: #F4F4F4;
+  --color-secondary: #3A7CA5;
+
+  /* VariaÃ§Ãµes de Profundidade & SuperfÃ­cie */
+  --color-bg-deep: #0A0A0A;
+  --color-surface-elevated: #1F1F1F;
+  --color-surface-card: #181818;
+  --color-surface-hover: #363636;
+  --color-glass-bar: rgba(18, 18, 18, 0.85);
+  --color-glass-sheet: rgba(18, 18, 18, 0.95);
+
+  /* Variantes Coral (PrimÃ¡ria / AÃ§Ã£o EstratÃ©gica) */
+  --color-primary-hover: #FF8275;
+  --color-primary-deep: #E05346;
+  --color-primary-glow: rgba(255, 105, 91, 0.28);
+  --color-primary-subtle: rgba(255, 105, 91, 0.12);
+  --color-primary-border: rgba(255, 105, 91, 0.35);
+
+  /* Variantes Azul TÃ©cnico / ArdÃ³sia (SecundÃ¡ria) */
+  --color-secondary-hover: #4E95C3;
+  --color-secondary-deep: #2A5D7C;
+  --color-secondary-glow: rgba(58, 124, 165, 0.30);
+  --color-secondary-subtle: rgba(58, 124, 165, 0.12);
+  --color-secondary-border: rgba(58, 124, 165, 0.35);
+  --color-tech-cyan: #5CC0E6;
+
+  /* Escala de Texto */
+  --color-text-primary: #F4F4F4;
+  --color-text-muted: rgba(244, 244, 244, 0.70);
+  --color-text-subtle: rgba(244, 244, 244, 0.45);
+  --color-text-dim: rgba(244, 244, 244, 0.25);
+
+  /* Linhas & Bordas Hairline */
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.15);
+  --border-rule: rgba(255, 255, 255, 0.20);
+  --border-active: rgba(255, 105, 91, 0.50);
+
+  /* Feedback SemÃ¢ntico */
+  --color-success: #4BD888;
+  --color-warning: #FFB347;
+  --color-error: #FF4D4D;
+  --color-info: #3A7CA5;
+
+  /* Tokens Legados do Template / Bridge */
+  --signal: #FF695B;
+  --signal-deep: #E05346;
+  --chalk: #F4F4F4;
+  --foreground: #F4F4F4;
+  --background: #121212;
+  --void: #0A0A0A;
+
+  /* Tipografia Stacks */
+  --font-general: var(--font-general-sans), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-tag: var(--font-mulish), "Mulish", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-onest), "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+
+  /* EspaÃ§amentos & Layout */
+  --header-height: clamp(54px, 3.8vw, 68px);
+  --sidebar-w: clamp(200px, 16vw, 270px);
+  --container-max: 1440px;
+}
+
+/* ================================================================ Reset & Base */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; color-scheme: dark; }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* SeleÃ§Ã£o de texto personalizada */
+::selection { background: var(--color-primary); color: #000; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-deep); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* ================================================================ Layout do CatÃ¡logo */
+#mr-catalog {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sidebar Fixa Esquerda com Efeito de Vidro */
+#mr-side {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 1.5rem 1.25rem 2rem;
+  background: var(--color-glass-bar);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-right: 1px solid var(--border-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 40;
+}
+
+.side-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+.side-brand .monogram {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-primary);
+  font-family: var(--font-tag);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 16px var(--color-primary-subtle);
+}
+.side-brand .brand-title {
+  font-family: var(--font-general);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+.side-brand .brand-badge {
+  font-family: var(--font-tag);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: block;
+  margin-top: 2px;
+}
+
+.side-nav-heading {
+  font-family: var(--font-tag);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  padding: 0.6rem 0.5rem 0.3rem;
+  margin-top: 0.5rem;
+}
+
+#mr-side a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--font-tag);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+#mr-side a b {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-subtle);
+  font-weight: 500;
+  transition: color 0.25s;
+}
+#mr-side a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+#mr-side a:hover b { color: var(--color-primary); }
+#mr-side a.is-current {
+  color: #fff;
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary-border);
+}
+#mr-side a.is-current b { color: var(--color-primary); }
+
+/* Main Content Container */
+#mr-main {
+  min-width: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* ================================================================ Backgrounds Globais & Efeitos */
+/* Canvas Interativo TecnolÃ³gico (Circuit & Network Constellation) */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+}
+
+/* Fundo com Malha Editorial TecnolÃ³gica */
+.ds-grid-bg {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 105, 91, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 60%, rgba(58, 124, 165, 0.07) 0%, transparent 50%),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+}
+
+.ds-section-glow {
+  position: relative;
+}
+.ds-section-glow::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: 10%;
+  width: 380px;
+  height: 240px;
+  background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* ================================================================ Grupos & SeÃ§Ãµes */
+.ds-group {
+  padding: 4.5rem clamp(1.5rem, 4vw, 4.5rem) 5.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+  position: relative;
+  scroll-margin-top: 1rem;
+}
+
+.ds-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.75rem;
+  border-bottom: 1px solid var(--border-rule);
+  position: relative;
+}
+.ds-head span {
+  font-family: var(--font-tag);
+  font-size: clamp(11px, 0.95vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.ds-head h2 {
+  font-family: var(--font-general);
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+}
+.ds-head .ds-head-desc {
+  margin-left: auto;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-subtle);
+  max-width: 36ch;
+  text-align: right;
+}
+
+.ds-sub {
+  margin: 2.5rem 0 1.25rem;
+  font-family: var(--font-tag);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ds-sub::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-hairline);
+}
+
+.ds-spec {
+  margin-bottom: 3.5rem;
+}
+.ds-spec:last-child { margin-bottom: 0; }
+.ds-spec > h3 {
+  font-family: var(--font-general);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+.ds-meta {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--color-text-subtle);
+  word-break: break-all;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-hairline);
+}
+.ds-note {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 75ch;
+  margin: 0.5rem 0 0.75rem;
+}
+
+/* ================================================================ PRIMEIRA DOBRA (HERO SUPREMO) */
+#hero-fold {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.5rem, 4vw, 4.5rem) 3.5rem;
+  background: radial-gradient(circle at 65% 30%, rgba(255, 105, 91, 0.09) 0%, transparent 55%),
+              radial-gradient(circle at 15% 75%, rgba(58, 124, 165, 0.08) 0%, transparent 60%),
+              #121212;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-rule);
+}
+
+/* Barra de NavegaÃ§Ã£o Flutuante de DemonstraÃ§Ã£o */
+.hero-glass-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(18, 18, 18, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+.hero-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-nav-brand .brand-logo-text {
+  font-family: var(--font-general);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.hero-nav-brand .brand-pill {
+  font-family: var(--font-tag);
+  font-size: 10px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-family: var(--font-general);
+  font-size: 14px;
+}
+.hero-nav-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+  padding: 0.25rem 0;
+}
+.hero-nav-links a:hover, .hero-nav-links a.active {
+  color: #fff;
+}
+.hero-nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+}
+
+/* ConteÃºdo Principal do Hero */
+.hero-content-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.hero-editorial-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-tagline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-tag);
+  font-size: clamp(11px, 0.9vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary-border);
+  width: fit-content;
+  box-shadow: 0 0 20px rgba(255, 105, 91, 0.15);
+}
+.hero-tagline-badge .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+  animation: ds-pulse 2s infinite ease-in-out;
+}
+@keyframes ds-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+
+.hero-headline {
+  font-family: var(--font-general);
+  font-size: clamp(34px, 4.4vw, 62px);
+  line-height: 1.0;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0;
+}
+.hero-headline strong {
+  font-weight: 500;
+  color: #fff;
+}
+.hero-headline .coral-highlight {
+  color: var(--color-primary);
+  text-shadow: 0 0 24px var(--color-primary-glow);
+}
+
+.hero-body-text {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 58ch;
+  margin: 0;
+}
+
+.hero-actions-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+/* Card Visual do Hero (com Retrato Editorial e Efeitos) */
+.hero-visual-card {
+  position: relative;
+  background: linear-gradient(145deg, #1A1A1A, #121212);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+}
+.hero-visual-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.8), 0 0 30px var(--color-primary-subtle);
+  border-color: rgba(255, 105, 91, 0.35);
+}
+.hero-visual-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-secondary), transparent);
+}
+.hero-visual-img-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 24vw, 360px);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+.hero-visual-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: contrast(1.05) brightness(0.95);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-visual-card:hover .hero-visual-img-wrap img {
+  transform: scale(1.03);
+}
+/* MÃ¡scara de gradiente editorial na foto */
+.hero-visual-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.3) 40%, transparent 100%),
+              radial-gradient(circle at top right, rgba(255, 105, 91, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-photo-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-family: var(--font-tag);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(18, 18, 18, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hero-photo-badge b { color: var(--color-primary); font-weight: 600; }
+
+.hero-card-meta {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.hero-meta-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-hairline);
+}
+.hero-meta-item small {
+  display: block;
+  font-family: var(--font-tag);
+  font-size: 10px;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hero-meta-item span {
+  font-family: var(--font-general);
+  font-size: 15px;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+/* Barra Inferior de Capacidades do Hero */
+.hero-foot-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-hairline);
+  position: relative;
+  z-index: 5;
+}
+.hero-tags-sequence {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: var(--font-tag);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+.hero-tags-sequence .sep-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: inline-block;
+}
+.hero-preview-toggle-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ================================================================ BOTÃ•ES & AÃ‡Ã•ES (COMPONENTS) */
+/* Solid CTA com Tile de Ãcone (send-icon.svg) */
+.btn-cta-tile {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-cta-tile:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn-cta-tile .cta-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.75rem;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: #000;
+  font-family: var(--font-general);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background-color 0.25s, box-shadow 0.25s, color 0.25s;
+}
+.btn-cta-tile .cta-tile {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  transition: background-color 0.25s, transform 0.25s;
+}
+.btn-cta-tile .cta-tile img, .btn-cta-tile .cta-tile svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-cta-tile:hover {
+  transform: translateY(-2px);
+}
+.btn-cta-tile:hover .cta-label {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 0 24px var(--color-primary-glow);
+}
+.btn-cta-tile:hover .cta-tile {
+  background-color: #fff;
+}
+.btn-cta-tile:hover .cta-tile img, .btn-cta-tile:hover .cta-tile svg {
+  transform: translate(2px, -2px);
+}
+.btn-cta-tile:active {
+  transform: translateY(0);
+}
+.btn-cta-tile:active .cta-label {
+  background-color: var(--color-primary-deep);
+}
+
+/* Ghost Button com Trailing Bullet */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  height: 48px;
+  padding: 0 1.5rem;
+  border: 1px solid var(--border-rule);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--color-text);
+  font-family: var(--font-general);
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+}
+.btn-ghost .btn-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: currentColor;
+  transition: transform 0.2s, background-color 0.2s;
+}
+.btn-ghost:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  color: #fff;
+  box-shadow: 0 0 16px var(--color-primary-glow);
+}
+.btn-ghost:hover .btn-dot {
+  background-color: var(--color-primary);
+  transform: scale(1.5);
+}
+.btn-ghost:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.btn-ghost:active {
+  background: rgba(255, 105, 91, 0.22);
+}
+
+/* Ghost Signal Coral */
+.btn-ghost-coral {
+  border-color: var(--color-primary-border);
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+.btn-ghost-coral:hover {
+  border-color: var(--color-primary);
+  background: rgba(255, 105, 91, 0.22);
+  color: #fff;
+}
+
+/* Secondary Button (Tech Blue) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  height: 48px;
+  padding: 0 1.5rem;
+  border: 1px solid var(--color-secondary-border);
+  background: var(--color-secondary-subtle);
+  color: var(--color-secondary-hover);
+  font-family: var(--font-general);
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-secondary:hover {
+  background: rgba(58, 124, 165, 0.25);
+  border-color: var(--color-secondary);
+  color: #fff;
+  box-shadow: 0 0 16px var(--color-secondary-glow);
+}
+
+/* BotÃ£o Ãcone */
+.btn-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--border-hairline);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-icon:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+
+/* ================================================================ TIPOGRAFIA ROW & SPEC */
+.ds-type-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ds-type-row {
+  display: grid;
+  grid-template-columns: clamp(160px, 18vw, 240px) minmax(0, 1fr) clamp(160px, 16vw, 210px);
+  gap: 2rem;
+  align-items: center;
+  padding: 1.85rem 0;
+  border-top: 1px solid var(--border-hairline);
+}
+.ds-type-row:last-child {
+  border-bottom: 1px solid var(--border-hairline);
+}
+.ds-type-meta .type-role {
+  font-family: var(--font-tag);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+.ds-type-meta .type-face {
+  font-family: var(--font-general);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 0.35rem;
+}
+.ds-type-meta code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-subtle);
+  margin-top: 0.4rem;
+}
+.ds-type-sample {
+  min-width: 0;
+}
+.ds-type-specs-col {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--color-text-subtle);
+}
+
+/* ================================================================ CORES & SWATCHES */
+.ds-color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.ds-color-card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.ds-color-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-subtle);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+.ds-chip-stage {
+  height: 96px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: #000;
+  outline: 1px solid var(--border-hairline);
+  outline-offset: -1px;
+}
+.ds-chip-stage .color-fill {
+  position: absolute;
+  inset: 0;
+}
+.ds-chip-stage .contrast-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+.ds-chip-stage .contrast-badge.pass-aaa { color: var(--color-success); border-color: rgba(75, 216, 136, 0.4); }
+.ds-chip-stage .contrast-badge.pass-aa { color: #5CC0E6; border-color: rgba(92, 192, 230, 0.4); }
+
+.ds-color-info {
+  padding: 1.15rem;
+}
+.ds-color-info strong {
+  display: block;
+  font-family: var(--font-general);
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+}
+.ds-color-info .hex-code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-primary);
+  margin-top: 2px;
+  display: block;
+}
+.ds-color-info .token-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-subtle);
+  margin-top: 2px;
+  display: block;
+}
+.ds-color-info p {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  margin: 0.65rem 0 0;
+}
+
+/* ================================================================ CARDS (COMPONENTS) */
+.ds-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Card 01..05 - Processo de Trabalho MR (Compreender, Organizar...) */
+.card-process-step {
+  background: linear-gradient(160deg, #1C1C1C 0%, #141414 100%);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+.card-process-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transition: width 0.4s ease;
+}
+.card-process-step:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--color-primary-subtle);
+}
+.card-process-step:hover::before { width: 100%; }
+
+.card-step-num {
+  font-family: var(--font-tag);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card-step-title {
+  font-family: var(--font-general);
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.85rem;
+  text-transform: uppercase;
+}
+.card-step-desc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Card 01..05 - SituaÃ§Ãµes de Ajuda MR */
+.card-help-situation {
+  background: var(--color-surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card-help-situation:hover {
+  border-color: var(--color-primary);
+  background: #1C1C1C;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+.help-situation-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.help-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.help-heading {
+  font-family: var(--font-general);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.35;
+}
+.help-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ================================================================ INPUTS & FORMS */
+/* Contact Bar Oficial MR (Inline Glass Form) */
+.mr-contact-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(18, 18, 18, 0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-rule);
+  padding: 0.4rem 0.4rem 0.4rem 1.25rem;
+  border-radius: 8px;
+  max-width: 640px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.mr-contact-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-general);
+  font-size: 14px;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+}
+.mr-contact-bar input::placeholder {
+  color: var(--color-text-subtle);
+}
+.mr-contact-bar input:focus {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+.mr-contact-bar .divider-line {
+  width: 1px;
+  height: 24px;
+  background: var(--border-hairline);
+  margin: 0 0.5rem;
+}
+
+/* Floating Input Tradicional */
+.ds-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.ds-form-field label {
+  font-family: var(--font-tag);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+.ds-input {
+  width: 100%;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  transition: all 0.25s;
+}
+.ds-input:focus {
+  border-color: var(--color-primary);
+  background: rgba(255, 105, 91, 0.04);
+  box-shadow: 0 0 16px var(--color-primary-subtle);
+}
+.ds-input.has-error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.2);
+}
+.ds-input.has-success {
+  border-color: var(--color-success);
+  box-shadow: 0 0 12px rgba(75, 216, 136, 0.2);
+}
+.field-helper {
+  font-size: 11px;
+  color: var(--color-text-subtle);
+}
+.field-helper.error-text { color: var(--color-error); }
+.field-helper.success-text { color: var(--color-success); }
+
+/* Switch Toggle (Consent & Options) */
+.ds-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+}
+.ds-switch-btn {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 3px;
+  transition: background-color 0.25s;
+}
+.ds-switch-btn.is-active {
+  background: var(--color-primary);
+  box-shadow: 0 0 12px var(--color-primary-glow);
+}
+.ds-switch-knob {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.28s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+.ds-switch-btn.is-active .ds-switch-knob {
+  transform: translateX(20px);
+}
+
+/* ================================================================ DISCLOSURE & OVERLAYS */
+/* FAQ Accordion MR */
+.ds-accordion-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-rule);
+}
+.ds-acc-item {
+  border-bottom: 1px solid var(--border-rule);
+}
+.ds-acc-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-family: var(--font-tag);
+  font-size: clamp(14px, 1.1vw, 17px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+  outline: none;
+}
+.ds-acc-btn:hover {
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+.ds-acc-btn .acc-cross {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.ds-acc-btn .acc-cross::before, .ds-acc-btn .acc-cross::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+}
+.ds-acc-btn .acc-cross::before { top: 50%; left: 0; width: 100%; height: 1.5px; transform: translateY(-50%); }
+.ds-acc-btn .acc-cross::after { left: 50%; top: 0; height: 100%; width: 1.5px; transform: translateX(-50%); }
+.ds-acc-item.is-open .acc-cross { transform: rotate(45deg); color: var(--color-primary); }
+
+.ds-acc-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.3, 1), opacity 0.35s;
+}
+.ds-acc-item.is-open .ds-acc-panel {
+  max-height: 280px;
+  opacity: 1;
+}
+.ds-acc-content {
+  padding: 0 0.5rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 70ch;
+}
+
+/* Modal de DemonstraÃ§Ã£o / DiÃ¡logo de PreferÃªncias */
+.ds-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: none;
+  place-items: center;
+  padding: 1.5rem;
+}
+.ds-modal-backdrop.is-visible {
+  display: grid;
+}
+.ds-modal-box {
+  background: #181818;
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 520px;
+  padding: 1.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  animation: ds-modal-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+@keyframes ds-modal-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.ds-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.ds-modal-header h3 {
+  font-family: var(--font-general);
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+.ds-modal-body {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ds-modal-footer {
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* ================================================================ BADGES & TOOLTIPS */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  font-family: var(--font-tag);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-hairline);
+  color: var(--color-text-muted);
+}
+.badge-tag.coral {
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  border-color: var(--color-primary-border);
+}
+.badge-tag.tech {
+  color: var(--color-secondary-hover);
+  background: var(--color-secondary-subtle);
+  border-color: var(--color-secondary-border);
+}
+
+/* Tooltip Micro-Interaction */
+.tooltip-trigger {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed var(--color-text-subtle);
+}
+.tooltip-trigger .tooltip-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #242424;
+  border: 1px solid var(--border-subtle);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.35;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+.tooltip-trigger .tooltip-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #242424;
+}
+.tooltip-trigger:hover .tooltip-bubble {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ================================================================ ÃCONES VITRINE */
+.ds-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+.ds-icon-box {
+  background: var(--color-surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.ds-icon-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary-border);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+.ds-icon-stage {
+  height: 52px;
+  display: grid;
+  place-items: center;
+}
+.ds-icon-stage img, .ds-icon-stage svg {
+  max-width: 32px;
+  max-height: 32px;
+}
+.ds-icon-box code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+.ds-icon-box small {
+  font-size: 11px;
+  color: var(--color-text-subtle);
+}
+
+/* AnimaÃ§Ã£o Rotativa do Asterisco */
+@keyframes ds-spin-continuous {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.asterisk-spin-smooth {
+  animation: ds-spin-continuous 9s linear infinite;
+}
+
+/* ================================================================ ANIMAÃ‡Ã•ES & MOTION LAB */
+.ds-motion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.motion-card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.motion-card-preview {
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow: hidden;
+  position: relative;
+}
+.motion-replay-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-tag);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.motion-replay-btn:hover {
+  background: var(--color-primary-subtle);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* StarFall Canvas Specimen Container */
+.starfall-container {
+  height: 240px;
+  position: relative;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+}
+.starfall-container canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Loader Specimen Container */
+.loader-spec-box {
+  background: #000;
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================================================================ RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  #mr-catalog {
+    grid-template-columns: 1fr;
+  }
+  #mr-side {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 60px;
+    flex-direction: row;
+    align-items: center;
+    border-right: none;
+    border-top: 1px solid var(--border-hairline);
+    padding: 0.5rem 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0.5rem;
+    background: rgba(18, 18, 18, 0.95);
+    scrollbar-width: none;
+  }
+  .side-brand, .side-nav-heading { display: none; }
+  #mr-side a {
+    white-space: nowrap;
+    padding: 0.4rem 0.75rem;
+    font-size: 11px;
+  }
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .ds-type-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .ds-type-specs-col { text-align: left; }
+}
+
+@media (max-width: 640px) {
+  .hero-nav-links { display: none; }
+  .hero-actions-row { flex-direction: column; align-items: stretch; }
+  .btn-cta-tile { width: 100%; }
+  .btn-cta-tile .cta-label { flex: 1; }
+  .btn-ghost { justify-content: center; width: 100%; }
+  .mr-contact-bar { flex-direction: column; align-items: stretch; padding: 0.75rem; gap: 0.5rem; }
+  .mr-contact-bar .divider-line { display: none; }
+}
+</style>
+</head>
+<body class="onest_variable generalSans_variable mulish_variable">
+
+<div id="mr-catalog">
+  <!-- ============================================================== SIDEBAR DE NAVEGAÃ‡ÃƒO -->
+  <aside id="mr-side" aria-label="NavegaÃ§Ã£o do Design System">
+    <div class="side-brand">
+      <div class="monogram">MR</div>
+      <div>
+        <div class="brand-title">Marcus Rolim</div>
+        <span class="brand-badge">Design System v1.0</span>
+      </div>
+    </div>
+
+    <div class="side-nav-heading">Ãndice do Sistema</div>
+    <a href="#sec-hero" class="is-current"><b>00</b>VisÃ£o & Hero</a>
+    <a href="#sec-typography"><b>01</b>Tipografia</a>
+    <a href="#sec-colors"><b>02</b>Sistema de Cores</a>
+    <a href="#sec-components"><b>03</b>Componentes UI</a>
+    <a href="#sec-icons"><b>04</b>Biblioteca de Ãcones</a>
+    <a href="#sec-motion"><b>05</b>Motion & AnimaÃ§Ãµes</a>
+    <a href="#sec-surfaces"><b>06</b>SuperfÃ­cies & Fundos</a>
+    <a href="#sec-3d-stage"><b>07</b>Cena 3D & Overview</a>
+  </aside>
+
+  <!-- ============================================================== ÃREA PRINCIPAL -->
+  <main id="mr-main">
+
+    <!-- ============================================================ 00 HERO DEMONSTRAÃ‡ÃƒO SUPREMA -->
+    <section id="sec-hero" class="ds-group ds-grid-bg" style="padding: 0; border-bottom: none;">
+      <div id="hero-fold">
+        <!-- Canvas TecnolÃ³gico com ConexÃµes e Pulso Digital -->
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+        <!-- Navbar Flutuante Editorial -->
+        <header class="hero-glass-nav">
+          <div class="hero-nav-brand">
+            <span style="font-family:var(--font-tag);font-weight:700;color:var(--color-primary);font-size:15px;letter-spacing:0.05em">[ MR ]</span>
+            <span class="brand-logo-text">Marcus Rolim</span>
+            <span class="brand-pill">GestÃ£o Â· EducaÃ§Ã£o Â· Tecnologia</span>
+          </div>
+          <nav class="hero-nav-links" aria-label="Menu Principal">
+            <a href="#sec-hero" class="active">InÃ­cio</a>
+            <a href="#sec-typography">Tipografia</a>
+            <a href="#sec-colors">Cores</a>
+            <a href="#sec-components">Componentes</a>
+            <a href="#sec-motion">AnimaÃ§Ãµes</a>
+          </nav>
+          <div>
+            <a href="#sec-components" class="btn-ghost" style="height:38px;padding:0 1.1rem;font-size:13px;">
+              Vamos conversar<span class="btn-dot"></span>
+            </a>
+          </div>
+        </header>
+
+        <!-- ConteÃºdo Hero de Alto Impacto -->
+        <div class="hero-content-grid">
+          <!-- Coluna 1: Texto e Filosofia da Marca MR -->
+          <div class="hero-editorial-col">
+            <div class="hero-tagline-badge">
+              <span class="pulse-dot"></span>
+              PrincÃ­pio Fundamental da Marca
+            </div>
+
+            <h1 class="hero-headline">
+              Toda boa soluÃ§Ã£o comeÃ§a pela <strong>compreensÃ£o do problema</strong>.
+              <span class="coral-highlight">A tecnologia vem depois.</span>
+            </h1>
+
+            <p class="hero-body-text">
+              Cada pessoa e cada organizaÃ§Ã£o possuem necessidades, objetivos e desafios diferentes.
+              Antes de escolher uma ferramenta, Ã© preciso compreender a realidade, organizar as possibilidades e entÃ£o decidir qual soluÃ§Ã£o faz sentido.
+            </p>
+
+            <div class="hero-actions-row">
+              <!-- Solid CTA com Tile de Ãcone -->
+              <a href="#como-posso-ajudar" class="btn-cta-tile">
+                <span class="cta-label">Como posso ajudar</span>
+                <span class="cta-tile">
+                  <img src="assets/overview/assets/images/hero/send-icon.svg" alt="Seta de envio" width="16" height="16">
+                </span>
+              </a>
+
+              <!-- Ghost Button com Bullet Interativo -->
+              <a href="#sec-typography" class="btn-ghost">
+                ConheÃ§a meu trabalho<span class="btn-dot"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Card Editorial com Fotografia e Micro-MÃ©tricas -->
+          <div class="hero-visual-card">
+            <div class="hero-visual-img-wrap">
+              <!-- Imagem de alta qualidade integrada com mÃ¡scara suave -->
+              <img src="assets/overview/assets/images/sections/financial.png" alt="Marcus Rolim â€” Foto Profissional em Ambiente TecnolÃ³gico">
+              <div class="hero-photo-badge">
+                <b>MR</b> Marcus Rolim Â· GestÃ£o & Tecnologia
+              </div>
+            </div>
+
+            <div class="hero-card-meta">
+              <div class="hero-meta-item">
+                <small>Abordagem Central</small>
+                <span>DiagnÃ³stico & OrganizaÃ§Ã£o</span>
+              </div>
+              <div class="hero-meta-item">
+                <small>ExecuÃ§Ã£o Consciente</small>
+                <span>Ferramentas & AutomaÃ§Ãµes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faixa Inferior de Recursos do Hero -->
+        <div class="hero-foot-strip">
+          <div class="hero-tags-sequence">
+            <span>[ COMPREENDER ]</span>
+            <span class="sep-dot"></span>
+            <span>[ ORGANIZAR ]</span>
+            <span class="sep-dot"></span>
+            <span>[ PLANEJAR ]</span>
+            <span class="sep-dot"></span>
+            <span>[ EXECUTAR ]</span>
+            <span class="sep-dot"></span>
+            <span>[ EVOLUIR ]</span>
+          </div>
+
+          <div class="hero-preview-toggle-bar">
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-subtle);">Estado do Sistema:</span>
+            <span class="badge-tag coral"><span class="pulse-dot" style="width:5px;height:5px;"></span>ATIVO Â· WCAG AAA READY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ 01 TIPOGRAFIA -->
+    <section id="sec-typography" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 01 ]</span>
+        <h2>Tipografia</h2>
+        <div class="ds-head-desc">
+          Hierarquia editorial sÃ³bria com General Sans, Onest e Mulish.
+        </div>
+      </div>
+
+      <div class="ds-spec">
+        <h3>EstratÃ©gia e Pilha de Fontes (Font Stacks)</h3>
+        <p class="ds-note">
+          As fontes sÃ£o hospedadas localmente no formato WOFF2 com <code>font-display: swap</code> para carregamento instantÃ¢neo sem FOUT. TrÃªs famÃ­lias com papÃ©is estritos: <strong>General Sans</strong> para tÃ­tulos de impacto e display editorial; <strong>Onest</strong> para corpos de texto, formulÃ¡rios e painÃ©is; e <strong>Mulish</strong> para etiquetas, metadados e tags monospaÃ§adas.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.25rem;">
+          <div style="background:var(--color-surface-card);padding:1.25rem;border-radius:8px;border:1px solid var(--border-hairline);">
+            <small style="font-family:var(--font-tag);color:var(--color-primary);text-transform:uppercase;font-size:10px;letter-spacing:0.08em;">Display & TÃ­tulos</small>
+            <div style="font-family:var(--font-general);font-size:18px;margin-top:4px;">General Sans</div>
+            <code style="font-size:11px;color:var(--color-text-subtle);">Pesos: 300 (Light), 400 (Regular), 500 (Medium)</code>
+          </div>
+          <div style="background:var(--color-surface-card);padding:1.25rem;border-radius:8px;border:1px solid var(--border-hairline);">
+            <small style="font-family:var(--font-tag);color:var(--color-secondary-hover);text-transform:uppercase;font-size:10px;letter-spacing:0.08em;">Interface & Leitura</small>
+            <div style="font-family:var(--font-sans);font-size:18px;margin-top:4px;">Onest</div>
+            <code style="font-size:11px;color:var(--color-text-subtle);">Pesos: 300 a 700 (Variable woff2)</code>
+          </div>
+          <div style="background:var(--color-surface-card);padding:1.25rem;border-radius:8px;border:1px solid var(--border-hairline);">
+            <small style="font-family:var(--font-tag);color:var(--color-text-muted);text-transform:uppercase;font-size:10px;letter-spacing:0.08em;">Tags & Indicadores</small>
+            <div style="font-family:var(--font-tag);font-size:18px;margin-top:4px;">Mulish</div>
+            <code style="font-size:11px;color:var(--color-text-subtle);">Pesos: 300, 400, 600, 700</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela Completa de Escala TipogrÃ¡fica com EspÃ©cimes Reais -->
+      <div class="ds-type-table">
+        <!-- H1 -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">H1 Â· Display Hero</div>
+            <div class="type-face">General Sans Â· 300 Light</div>
+            <code>h1.font-general text-[5.556vw] leading-[0.9] font-light</code>
+          </div>
+          <div class="ds-type-sample">
+            <h1 style="font-family:var(--font-general);font-size:clamp(32px, 4.8vw, 64px);line-height:0.92;font-weight:300;letter-spacing:-0.025em;margin:0;">
+              CompreensÃ£o do problema.
+            </h1>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 5.556vw / 56px<br>
+            Line-height: 0.92<br>
+            Letter-spacing: -0.025em<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- H2 -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">H2 Â· TÃ­tulo de SeÃ§Ã£o</div>
+            <div class="type-face">General Sans Â· 300 Light</div>
+            <code>h2.font-general text-[3.75vw] leading-[1.0]</code>
+          </div>
+          <div class="ds-type-sample">
+            <h2 style="font-family:var(--font-general);font-size:clamp(26px, 3.2vw, 42px);line-height:1.05;font-weight:300;letter-spacing:-0.015em;margin:0;">
+              Essa forma de pensar nasceu da prÃ¡tica.
+            </h2>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 3.75vw / 40px<br>
+            Line-height: 1.05<br>
+            Letter-spacing: -0.015em<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- H3 -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">H3 Â· Bloco / Card</div>
+            <div class="type-face">General Sans Â· 400 Regular</div>
+            <code>h3.font-general text-[2.22vw] leading-[1.15]</code>
+          </div>
+          <div class="ds-type-sample">
+            <h3 style="font-family:var(--font-general);font-size:clamp(20px, 2.0vw, 28px);line-height:1.2;font-weight:400;margin:0;">
+              Como isso funciona na prÃ¡tica?
+            </h3>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 2.22vw / 28px<br>
+            Line-height: 1.2<br>
+            Letter-spacing: -0.01em<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- H4 -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">H4 Â· SubtÃ­tulo TÃ©cnico</div>
+            <div class="type-face">General Sans Â· 500 Medium</div>
+            <code>h4.font-general text-[1.5vw] font-medium</code>
+          </div>
+          <div class="ds-type-sample">
+            <h4 style="font-family:var(--font-general);font-size:clamp(17px, 1.4vw, 22px);line-height:1.3;font-weight:500;margin:0;color:var(--color-primary);">
+              01 COMPREENDER Â· DIAGNÃ“STICO
+            </h4>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 1.5vw / 20px<br>
+            Line-height: 1.3<br>
+            Letter-spacing: 0.02em<br>
+            Transform: uppercase
+          </div>
+        </div>
+
+        <!-- H5 -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">H5 Â· DiÃ¡logo & Painel</div>
+            <div class="type-face">Onest Â· 500 Medium</div>
+            <code>h5.font-sans text-xl font-medium</code>
+          </div>
+          <div class="ds-type-sample">
+            <h5 style="font-family:var(--font-sans);font-size:18px;font-weight:500;margin:0;color:#fff;">
+              PreferÃªncias de Privacidade e Cookies
+            </h5>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 1.125rem / 18px<br>
+            Line-height: 1.35<br>
+            Letter-spacing: 0<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- H6 -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">H6 Â· RÃ³tulo de Componente</div>
+            <div class="type-face">Onest Â· 500 Medium</div>
+            <code>h6.font-sans text-base font-medium</code>
+          </div>
+          <div class="ds-type-sample">
+            <h6 style="font-family:var(--font-sans);font-size:15px;font-weight:500;margin:0;color:var(--color-text-muted);">
+              Cursos, capacitaÃ§Ãµes e projetos aplicados
+            </h6>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 1.0rem / 16px<br>
+            Line-height: 1.4<br>
+            Letter-spacing: 0<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- Body Large -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">body-lg Â· Intro Editorial</div>
+            <div class="type-face">General Sans Â· 400 Regular</div>
+            <code>p.font-general text-[1.25vw] leading-[1.5]</code>
+          </div>
+          <div class="ds-type-sample">
+            <p style="font-family:var(--font-general);font-size:clamp(16px, 1.2vw, 19px);line-height:1.55;margin:0;color:var(--color-text);">
+              Nem sempre o problema estÃ¡ em nÃ£o ter uma ferramenta. Muitas vezes, o primeiro passo Ã© entender o que precisa ser resolvido e qual caminho faz sentido.
+            </p>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 1.25vw / 18px<br>
+            Line-height: 1.55<br>
+            Letter-spacing: 0<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- Body Standard -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">body Â· Leitura ContÃ­nua</div>
+            <div class="type-face">Onest Â· 400 Regular</div>
+            <code>p.font-sans text-sm leading-relaxed</code>
+          </div>
+          <div class="ds-type-sample">
+            <p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;margin:0;color:var(--color-text-muted);">
+              Ao longo da minha trajetÃ³ria, atuei em Ã¡reas diferentes, mas sempre com o mesmo objetivo: compreender problemas, organizar soluÃ§Ãµes e entregar resultados sustentÃ¡veis.
+            </p>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 0.9375rem / 15px<br>
+            Line-height: 1.6<br>
+            Letter-spacing: 0<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- Body Small / Captions -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">body-sm / captions</div>
+            <div class="type-face">Onest Â· 400 Regular</div>
+            <code>span.font-sans text-xs leading-normal</code>
+          </div>
+          <div class="ds-type-sample">
+            <span style="font-family:var(--font-sans);font-size:12px;line-height:1.45;color:var(--color-text-subtle);">
+              Â© Marcus Rolim. Toda tecnologia precisa ser traduzida para a realidade de quem vai utilizÃ¡-la.
+            </span>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 0.75rem / 12px<br>
+            Line-height: 1.45<br>
+            Letter-spacing: 0<br>
+            Transform: none
+          </div>
+        </div>
+
+        <!-- Labels / Tags -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">Labels Â· Tags Â· Caps</div>
+            <div class="type-face">Mulish Â· 600 Semi-Bold</div>
+            <code>span.font-tag text-[0.833vw] uppercase</code>
+          </div>
+          <div class="ds-type-sample">
+            <span style="font-family:var(--font-tag);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-primary);font-weight:600;">
+              [ GESTÃƒO Â· EDUCAÃ‡ÃƒO Â· TECNOLOGIA ]
+            </span>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 0.833vw / 12px<br>
+            Line-height: 1.2<br>
+            Letter-spacing: 0.08em<br>
+            Transform: uppercase
+          </div>
+        </div>
+
+        <!-- EstatÃ­stica / MÃ©trica NumÃ©rica -->
+        <div class="ds-type-row">
+          <div class="ds-type-meta">
+            <div class="type-role">MÃ©trica / Tabular</div>
+            <div class="type-face">Mulish Â· 300 Light</div>
+            <code>span.font-tag.text-[2.222vw].tabular-nums</code>
+          </div>
+          <div class="ds-type-sample">
+            <span style="font-family:var(--font-tag);font-size:clamp(26px, 2.5vw, 38px);font-weight:300;color:#fff;font-variant-numeric:tabular-nums;">
+              05 <small style="font-size:15px;color:var(--color-text-subtle);">ETAPAS DE EXECUÃ‡ÃƒO</small>
+            </span>
+          </div>
+          <div class="ds-type-specs-col">
+            Size: 2.222vw / 32px<br>
+            Line-height: 1.0<br>
+            Letter-spacing: -0.01em<br>
+            Transform: none
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ 02 SISTEMA DE CORES -->
+    <section id="sec-colors" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 02 ]</span>
+        <h2>Sistema de Cores</h2>
+        <div class="ds-head-desc">
+          Paleta Dark sÃ³bria com destaque cirÃºrgico em Coral e Azul TÃ©cnico.
+        </div>
+      </div>
+
+      <p class="ds-note">
+        <strong>Regra de Ouro da Identidade Visual:</strong> O coral (<code>#FF695B</code>) Ã© a cor primÃ¡ria de destaque, utilizada com mÃ¡xima precisÃ£o cirÃºrgica em CTAs, indicadores ativos, nÃºmeros de etapas e detalhes estratÃ©gicos â€” nunca espalhado indiscriminadamente. O fundo mantÃ©m-se escuro (<code>#121212</code>) com camadas sutis de profundidade (<code>#2E2E2E</code>, <code>#1A1A1A</code>).
+      </p>
+
+      <h3 class="ds-sub">Cores da Marca e PapÃ©is SemÃ¢nticos</h3>
+      <div class="ds-color-grid">
+        <!-- Coral PrimÃ¡rio -->
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background-color:#121212;">
+            <div class="color-fill" style="background-color:#FF695B;margin:10px;border-radius:6px;"></div>
+            <span class="contrast-badge pass-aaa">6.18:1 (AAA Large)</span>
+          </div>
+          <div class="ds-color-info">
+            <strong>Coral PrimÃ¡rio</strong>
+            <span class="hex-code">#FF695B</span>
+            <span class="token-code">--color-primary Â· rgb(255,105,91)</span>
+            <p>Destaque principal, CTAs decisivos, nÃºmeros de processo, hover ativo e anÃ©is de foco.</p>
+          </div>
+        </div>
+
+        <!-- Coral Deep (Active/Pressed) -->
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background-color:#121212;">
+            <div class="color-fill" style="background-color:#E05346;margin:10px;border-radius:6px;"></div>
+            <span class="contrast-badge pass-aa">5.20:1 (AA)</span>
+          </div>
+          <div class="ds-color-info">
+            <strong>Coral Deep</strong>
+            <span class="hex-code">#E05346</span>
+            <span class="token-code">--color-primary-deep Â· rgb(224,83,70)</span>
+            <p>Estado ativo/pressionado dos botÃµes primÃ¡rios e links de destaque.</p>
+          </div>
+        </div>
+
+        <!-- Azul TÃ©cnico SecundÃ¡rio -->
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background-color:#121212;">
+            <div class="color-fill" style="background-color:#3A7CA5;margin:10px;border-radius:6px;"></div>
+            <span class="contrast-badge pass-aa">4.52:1 (AA)</span>
+          </div>
+          <div class="ds-color-info">
+            <strong>Azul TÃ©cnico</strong>
+            <span class="hex-code">#3A7CA5</span>
+            <span class="token-code">--color-secondary Â· rgb(58,124,165)</span>
+            <p>Identidade de Tecnologia e EducaÃ§Ã£o, linhas estruturais, tags secundÃ¡rias e conectores.</p>
+          </div>
+        </div>
+
+        <!-- SuperfÃ­cie Escura -->
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background-color:#121212;">
+            <div class="color-fill" style="background-color:#2E2E2E;margin:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);"></div>
+            <span class="contrast-badge">SuperfÃ­cie</span>
+          </div>
+          <div class="ds-color-info">
+            <strong>SuperfÃ­cie Base</strong>
+            <span class="hex-code">#2E2E2E</span>
+            <span class="token-code">--color-surface Â· rgb(46,46,46)</span>
+            <p>SuperfÃ­cies de cards, containers, modais e blocos de apoio editorial.</p>
+          </div>
+        </div>
+
+        <!-- Fundo Oficial Dark -->
+        <div class="ds-color-card">
+          <div class="ds-chip-stage">
+            <div class="color-fill" style="background-color:#121212;margin:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);"></div>
+            <span class="contrast-badge">Canvas</span>
+          </div>
+          <div class="ds-color-info">
+            <strong>Dark Background</strong>
+            <span class="hex-code">#121212</span>
+            <span class="token-code">--color-background Â· rgb(18,18,18)</span>
+            <p>Fundo predominante do portal e viewport principal.</p>
+          </div>
+        </div>
+
+        <!-- Texto Claro (Chalk) -->
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background-color:#121212;">
+            <div class="color-fill" style="background-color:#F4F4F4;margin:10px;border-radius:6px;"></div>
+            <span class="contrast-badge pass-aaa">15.6:1 (AAA)</span>
+          </div>
+          <div class="ds-color-info">
+            <strong>Texto Principal (Chalk)</strong>
+            <span class="hex-code">#F4F4F4</span>
+            <span class="token-code">--color-text Â· rgb(244,244,244)</span>
+            <p>Tipografia principal, tÃ­tulos, cabeÃ§alhos e rÃ³tulos de alto contraste.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback SemÃ¢ntico -->
+      <h3 class="ds-sub">Cores de Feedback & Sistema</h3>
+      <div class="ds-color-grid">
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background:#121212;"><div class="color-fill" style="background:#4BD888;margin:10px;border-radius:6px;"></div><span class="contrast-badge pass-aaa">Sucesso</span></div>
+          <div class="ds-color-info"><strong>Sucesso</strong><span class="hex-code">#4BD888</span><p>ConfirmaÃ§Ãµes de envio, status operacionais e validaÃ§Ãµes aprovadas.</p></div>
+        </div>
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background:#121212;"><div class="color-fill" style="background:#FFB347;margin:10px;border-radius:6px;"></div><span class="contrast-badge pass-aaa">AtenÃ§Ã£o</span></div>
+          <div class="ds-color-info"><strong>Alerta / AtenÃ§Ã£o</strong><span class="hex-code">#FFB347</span><p>Avisos, limites de uso, diagnÃ³sticos em andamento.</p></div>
+        </div>
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background:#121212;"><div class="color-fill" style="background:#FF4D4D;margin:10px;border-radius:6px;"></div><span class="contrast-badge pass-aa">Erro</span></div>
+          <div class="ds-color-info"><strong>Erro / CrÃ­tico</strong><span class="hex-code">#FF4D4D</span><p>Falhas de formulÃ¡rio, campos requeridos ausentes.</p></div>
+        </div>
+        <div class="ds-color-card">
+          <div class="ds-chip-stage" style="background:#121212;"><div class="color-fill" style="background:#5CC0E6;margin:10px;border-radius:6px;"></div><span class="contrast-badge pass-aa">Informativo</span></div>
+          <div class="ds-color-info"><strong>Tech Cyan / Info</strong><span class="hex-code">#5CC0E6</span><p>Metadados, pulsos de rede neural, sinais informativos.</p></div>
+        </div>
+      </div>
+
+      <!-- Variantes de Opacidade e Gradientes -->
+      <h3 class="ds-sub">Gradientes & Variantes de Opacidade</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+        <div style="background:var(--color-surface-card);padding:1.5rem;border-radius:10px;border:1px solid var(--border-hairline);">
+          <div style="height:48px;border-radius:6px;background:linear-gradient(135deg, #FF695B, #E05346);margin-bottom:1rem;box-shadow:0 0 20px rgba(255,105,91,0.25);"></div>
+          <strong>Gradiente Coral Flame</strong>
+          <code style="font-size:11px;color:var(--color-text-subtle);display:block;margin-top:4px;">linear-gradient(135deg, #FF695B, #E05346)</code>
+          <p style="font-size:12px;color:var(--color-text-muted);margin:6px 0 0;">Utilizado no estado de brilho dos botÃµes primÃ¡rios e badges especiais.</p>
+        </div>
+
+        <div style="background:var(--color-surface-card);padding:1.5rem;border-radius:10px;border:1px solid var(--border-hairline);">
+          <div style="height:48px;border-radius:6px;background:linear-gradient(135deg, #3A7CA5, #1E4663);margin-bottom:1rem;box-shadow:0 0 20px rgba(58,124,165,0.2);"></div>
+          <strong>Gradiente Tech Slate</strong>
+          <code style="font-size:11px;color:var(--color-text-subtle);display:block;margin-top:4px;">linear-gradient(135deg, #3A7CA5, #1E4663)</code>
+          <p style="font-size:12px;color:var(--color-text-muted);margin:6px 0 0;">Linhas de processo tecnolÃ³gico e divisores de timeline.</p>
+        </div>
+
+        <div style="background:var(--color-surface-card);padding:1.5rem;border-radius:10px;border:1px solid var(--border-hairline);">
+          <div style="height:48px;border-radius:6px;background:linear-gradient(180deg, #2E2E2E, #141414);margin-bottom:1rem;border:1px solid rgba(255,255,255,0.1);"></div>
+          <strong>ElevaÃ§Ã£o Escura (Surface Depth)</strong>
+          <code style="font-size:11px;color:var(--color-text-subtle);display:block;margin-top:4px;">linear-gradient(180deg, #2E2E2E, #141414)</code>
+          <p style="font-size:12px;color:var(--color-text-muted);margin:6px 0 0;">CriaÃ§Ã£o de relevo e profundidade em cards e painÃ©is.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ 03 COMPONENTES UI -->
+    <section id="sec-components" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 03 ]</span>
+        <h2>Componentes UI</h2>
+        <div class="ds-head-desc">
+          EspecificaÃ§Ãµes detalhadas com animaÃ§Ãµes, estados e acessibilidade.
+        </div>
+      </div>
+
+      <!-- BOTÃ•ES -->
+      <article class="ds-spec">
+        <h3>1. BotÃµes & AÃ§Ãµes Interativas (Buttons)</h3>
+        <p class="ds-note">
+          InteraÃ§Ãµes de mola suave (spring tension 320 / friction 28), estados de foco acessÃ­veis por teclado (focus-visible com contorno coral de 2px e offset de 2px), e feedback tÃ¡til ao clique.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;margin:1.5rem 0;">
+          <!-- Solid CTA com Tile -->
+          <div>
+            <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:6px;text-transform:uppercase;">Solid CTA (PrimÃ¡rio)</small>
+            <a href="#como-posso-ajudar" class="btn-cta-tile">
+              <span class="cta-label">Como posso ajudar</span>
+              <span class="cta-tile">
+                <img src="assets/overview/assets/images/hero/send-icon.svg" alt="" width="16" height="16">
+              </span>
+            </a>
+          </div>
+
+          <!-- Ghost Button -->
+          <div>
+            <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:6px;text-transform:uppercase;">Ghost Button (SecundÃ¡rio)</small>
+            <a href="#sec-typography" class="btn-ghost">
+              ConheÃ§a meu trabalho<span class="btn-dot"></span>
+            </a>
+          </div>
+
+          <!-- Ghost Coral -->
+          <div>
+            <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:6px;text-transform:uppercase;">Ghost Coral (Destaque)</small>
+            <button type="button" class="btn-ghost btn-ghost-coral">
+              Solicitar Contato<span class="btn-dot"></span>
+            </button>
+          </div>
+
+          <!-- Secondary Tech -->
+          <div>
+            <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:6px;text-transform:uppercase;">Secondary Tech</small>
+            <button type="button" class="btn-secondary">
+              Ver Arquitetura
+            </button>
+          </div>
+
+          <!-- Desabilitado -->
+          <div>
+            <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:6px;text-transform:uppercase;">Desabilitado</small>
+            <button type="button" class="btn-ghost" disabled style="opacity:0.4;cursor:not-allowed;">
+              IndisponÃ­vel<span class="btn-dot"></span>
+            </button>
+          </div>
+        </div>
+        <code class="ds-meta">Classes: .btn-cta-tile (.cta-label + .cta-tile) | .btn-ghost (.btn-dot) | .btn-ghost-coral | .btn-secondary</code>
+      </article>
+
+      <!-- ENTRADAS E FORMULÃRIOS -->
+      <article class="ds-spec">
+        <h3>2. FormulÃ¡rios e Entradas (Inputs & Forms)</h3>
+        <p class="ds-note">
+          ApresentaÃ§Ã£o da <strong>Barra de Contato Oficial MR</strong> (design inline em vidro), inputs com validaÃ§Ã£o e controles de alternÃ¢ncia (Consent Toggles).
+        </p>
+
+        <!-- Barra de Contato Inline -->
+        <div style="margin:1.5rem 0;">
+          <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:8px;text-transform:uppercase;">Barra de Contato Oficial (Site Footer / Hero)</small>
+          <form class="mr-contact-bar" onsubmit="event.preventDefault(); alert('DemonstraÃ§Ã£o: formulÃ¡rio de contato enviado com sucesso!');">
+            <input type="text" placeholder="Seu nome ou organizaÃ§Ã£o" aria-label="Nome" required>
+            <span class="divider-line"></span>
+            <input type="email" placeholder="seuemail@dominio.com.br" aria-label="E-mail" required>
+            <button type="submit" class="btn-ghost btn-ghost-coral" style="height:38px;padding:0 1.25rem;font-size:13px;flex-shrink:0;">
+              Enviar mensagem<span class="btn-dot"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Grid de Inputs Tradicionais com Estados -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2rem;">
+          <div class="ds-form-field">
+            <label for="demo-input-normal">Campo PadrÃ£o</label>
+            <input id="demo-input-normal" class="ds-input" type="text" placeholder="Digite uma informaÃ§Ã£o...">
+            <span class="field-helper">Texto de ajuda opcional</span>
+          </div>
+
+          <div class="ds-form-field">
+            <label for="demo-input-success">Estado de Sucesso</label>
+            <input id="demo-input-success" class="ds-input has-success" type="text" value="marcus@rolim.com.br">
+            <span class="field-helper success-text">âœ“ E-mail validado com sucesso</span>
+          </div>
+
+          <div class="ds-form-field">
+            <label for="demo-input-error">Estado de Erro</label>
+            <input id="demo-input-error" class="ds-input has-error" type="text" value="email_invalido">
+            <span class="field-helper error-text">âœ• Por favor insira um endereÃ§o vÃ¡lido</span>
+          </div>
+        </div>
+
+        <!-- Toggles de Consentimento / Switch -->
+        <div style="margin-top:2rem;max-width:540px;">
+          <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:8px;text-transform:uppercase;">Switches de OpÃ§Ãµes & Consentimento</small>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div class="ds-switch-row">
+              <div>
+                <strong style="display:block;font-size:14px;color:#fff;">NecessÃ¡rios para Funcionamento</strong>
+                <span style="font-size:12px;color:var(--color-text-subtle);">Cookies essenciais de seguranÃ§a e navegaÃ§Ã£o. Sempre ativos.</span>
+              </div>
+              <button type="button" class="ds-switch-btn is-active" disabled style="opacity:0.6;cursor:not-allowed;" aria-label="NecessÃ¡rios">
+                <span class="ds-switch-knob"></span>
+              </button>
+            </div>
+
+            <div class="ds-switch-row">
+              <div>
+                <strong style="display:block;font-size:14px;color:#fff;">MÃ©tricas AnÃ´nimas de Uso</strong>
+                <span style="font-size:12px;color:var(--color-text-subtle);">EstatÃ­sticas para identificar pÃ¡ginas Ãºteis sem rastreamento pessoal.</span>
+              </div>
+              <button type="button" class="ds-switch-btn is-active" data-switch aria-label="MÃ©tricas">
+                <span class="ds-switch-knob"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARDS -->
+      <article class="ds-spec" id="como-posso-ajudar">
+        <h3>3. CartÃµes & Estruturas de ConteÃºdo (Cards)</h3>
+        <p class="ds-note">
+          ImplementaÃ§Ã£o das duas principais tipologias de cards descritas no posicionamento da marca: <strong>Os 5 Passos do Processo</strong> e <strong>As 5 SituaÃ§Ãµes de Ajuda</strong>.
+        </p>
+
+        <!-- Os 5 Passos do Processo MR -->
+        <h4 style="font-family:var(--font-general);font-size:16px;color:#fff;margin:1.5rem 0 1rem;">Processo de SoluÃ§Ã£o (01 Compreender â†’ 05 Evoluir)</h4>
+        <div class="ds-cards-grid">
+          <div class="card-process-step">
+            <div class="card-step-num"><span>01</span> ETAPA INICIAL</div>
+            <h4 class="card-step-title">Compreender</h4>
+            <p class="card-step-desc">Entender a situaÃ§Ã£o, as pessoas envolvidas, o problema e o resultado que se pretende alcanÃ§ar.</p>
+          </div>
+
+          <div class="card-process-step">
+            <div class="card-step-num"><span>02</span> DIAGNÃ“STICO</div>
+            <h4 class="card-step-title">Organizar</h4>
+            <p class="card-step-desc">Separar causas de sintomas, reunir as informaÃ§Ãµes necessÃ¡rias e identificar limitaÃ§Ãµes, recursos e possibilidades.</p>
+          </div>
+
+          <div class="card-process-step">
+            <div class="card-step-num"><span>03</span> ESTRATÃ‰GIA</div>
+            <h4 class="card-step-title">Planejar</h4>
+            <p class="card-step-desc">Definir um caminho viÃ¡vel e decidir quais conhecimentos, processos e tecnologias podem contribuir para a soluÃ§Ã£o.</p>
+          </div>
+
+          <div class="card-process-step">
+            <div class="card-step-num"><span>04</span> APLICAÃ‡ÃƒO</div>
+            <h4 class="card-step-title">Executar</h4>
+            <p class="card-step-desc">Colocar a soluÃ§Ã£o em prÃ¡tica, seja por meio de uma ferramenta, automaÃ§Ã£o, sistema, processo ou capacitaÃ§Ã£o.</p>
+          </div>
+
+          <div class="card-process-step">
+            <div class="card-step-num"><span>05</span> ACOMPANHAMENTO</div>
+            <h4 class="card-step-title">Evoluir</h4>
+            <p class="card-step-desc">Observar os resultados, identificar o que funcionou e ajustar o que pode ser melhorado continuamente.</p>
+          </div>
+        </div>
+
+        <!-- As 5 SituaÃ§Ãµes de Ajuda MR -->
+        <h4 style="font-family:var(--font-general);font-size:16px;color:#fff;margin:2.5rem 0 1rem;">SituaÃ§Ãµes em que Posso Ajudar (Bloco 4 da Home)</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;">
+          <div class="card-help-situation">
+            <div class="help-situation-header">
+              <span class="help-num">01</span>
+              <div class="help-heading">Quero entender como a tecnologia pode ser Ãºtil</div>
+            </div>
+            <p class="help-text">Quando existe uma necessidade, mas ainda nÃ£o estÃ¡ claro qual ferramenta, processo ou caminho faz sentido.</p>
+          </div>
+
+          <div class="card-help-situation">
+            <div class="help-situation-header">
+              <span class="help-num">02</span>
+              <div class="help-heading">Quero melhorar ou organizar um processo</div>
+            </div>
+            <p class="help-text">Quando atividades estÃ£o demoradas, repetitivas, desorganizadas ou dependentes demais de trabalho manual.</p>
+          </div>
+
+          <div class="card-help-situation">
+            <div class="help-situation-header">
+              <span class="help-num">03</span>
+              <div class="help-heading">Tenho um problema e preciso desenvolver uma soluÃ§Ã£o</div>
+            </div>
+            <p class="help-text">Quando a necessidade pode resultar em uma ferramenta, automaÃ§Ã£o, sistema, chatbot ou dashboard planejado e executado.</p>
+          </div>
+
+          <div class="card-help-situation">
+            <div class="help-situation-header">
+              <span class="help-num">04</span>
+              <div class="help-heading">Quero preparar pessoas para novas tecnologias</div>
+            </div>
+            <p class="help-text">Cursos, treinamentos, palestras e atividades voltados Ã  compreensÃ£o e ao uso consciente de tecnologia e inteligÃªncia artificial.</p>
+          </div>
+
+          <div class="card-help-situation">
+            <div class="help-situation-header">
+              <span class="help-num">05</span>
+              <div class="help-heading">Quero estruturar um projeto educacional ou tecnolÃ³gico</div>
+            </div>
+            <p class="help-text">Planejamento de cursos, materiais, atividades, processos e projetos que precisem unir conhecimento, organizaÃ§Ã£o e tecnologia.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- NAVEGAÃ‡Ã•ES E RODAPÃ‰ -->
+      <article class="ds-spec">
+        <h3>4. NavegaÃ§Ãµes e RodapÃ© (Navbars & Footer)</h3>
+        <p class="ds-note">
+          DemonstraÃ§Ã£o do <strong>RodapÃ© Oficial de Marcus Rolim</strong> com os dados reais de contato, links sociais externos seguros e frase de fechamento.
+        </p>
+
+        <div style="background:#0D0D0D;border:1px solid var(--border-subtle);border-radius:14px;padding:clamp(1.5rem, 3vw, 3rem);margin-top:1.5rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border-hairline);">
+            <div>
+              <span style="font-family:var(--font-general);font-size:22px;color:#fff;font-weight:500;">MR â€” Marcus Rolim</span>
+              <p style="font-family:var(--font-tag);font-size:12px;color:var(--color-primary);margin:4px 0 0;text-transform:uppercase;letter-spacing:0.06em;">
+                â€œToda tecnologia precisa ser traduzida para a realidade de quem vai utilizÃ¡-la.â€
+              </p>
+            </div>
+            <a href="https://wa.me/5567999721850?text=Ol%C3%A1%2C%20Marcus.%20Encontrei%20seu%20contato%20pelo%20site%20marcusrolim.com.br%20e%20gostaria%20de%20conversar%20sobre%20uma%20situa%C3%A7%C3%A3o%2Fprojeto." target="_blank" rel="noopener noreferrer" class="btn-ghost btn-ghost-coral">
+              Conversar no WhatsApp<span class="btn-dot"></span>
+            </a>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin:2rem 0;">
+            <div>
+              <small style="font-family:var(--font-tag);text-transform:uppercase;color:var(--color-text-subtle);font-size:10px;letter-spacing:0.08em;display:block;margin-bottom:0.75rem;">NavegaÃ§Ã£o</small>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;font-size:14px;">
+                <li><a href="#sec-hero" style="color:var(--color-text-muted);text-decoration:none;">InÃ­cio</a></li>
+                <li><a href="#sec-typography" style="color:var(--color-text-muted);text-decoration:none;">Sobre</a></li>
+                <li><a href="#como-posso-ajudar" style="color:var(--color-text-muted);text-decoration:none;">Como Posso Ajudar</a></li>
+                <li><a href="#sec-components" style="color:var(--color-text-muted);text-decoration:none;">Contato</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <small style="font-family:var(--font-tag);text-transform:uppercase;color:var(--color-text-subtle);font-size:10px;letter-spacing:0.08em;display:block;margin-bottom:0.75rem;">Canais Oficiais</small>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;font-size:14px;">
+                <li><a href="mailto:contato@marcusrolim.com.br" style="color:var(--color-text-muted);text-decoration:none;">contato@marcusrolim.com.br</a></li>
+                <li><a href="https://www.linkedin.com/in/marcus-rolim-10b79232b/" target="_blank" rel="noopener noreferrer" style="color:var(--color-text-muted);text-decoration:none;">LinkedIn â†—</a></li>
+                <li><a href="https://www.instagram.com/marcusphotonrolim/" target="_blank" rel="noopener noreferrer" style="color:var(--color-text-muted);text-decoration:none;">Instagram â†—</a></li>
+                <li><a href="https://wa.me/5567999721850" target="_blank" rel="noopener noreferrer" style="color:var(--color-text-muted);text-decoration:none;">WhatsApp (+55 67 99972-1850) â†—</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="padding-top:1.5rem;border-top:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:12px;color:var(--color-text-subtle);">
+            <span>Â© <span id="footer-year">2026</span> Marcus Rolim. Todos os direitos reservados.</span>
+            <span style="font-family:var(--font-mono);">Portal Profissional Â· GestÃ£o Â· EducaÃ§Ã£o Â· Tecnologia</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- DISCLOSURE & MODALS -->
+      <article class="ds-spec">
+        <h3>5. DivulgaÃ§Ã£o Progressiva & Modais (Accordion & Modals)</h3>
+        <p class="ds-note">
+          AcordeÃµes expansÃ­veis com indicador vetorial que gira 45Â° suavemente, e janelas modais acessÃ­veis com backdrop blur.
+        </p>
+
+        <!-- AcordeÃ£o FAQ Interativo -->
+        <div style="max-width:760px;margin:1.5rem 0;">
+          <small style="display:block;font-size:11px;color:var(--color-text-subtle);margin-bottom:8px;text-transform:uppercase;">FAQ / AcordeÃ£o Interativo</small>
+          <div class="ds-accordion-list">
+            <div class="ds-acc-item is-open">
+              <button type="button" class="ds-acc-btn" aria-expanded="true">
+                <span>Qual Ã© o foco principal da atuaÃ§Ã£o profissional de Marcus Rolim?</span>
+                <span class="acc-cross" aria-hidden="true"></span>
+              </button>
+              <div class="ds-acc-panel">
+                <div class="ds-acc-content">
+                  A atuaÃ§Ã£o une GestÃ£o, EducaÃ§Ã£o e Tecnologia. O foco Ã© compreender problemas reais em pessoas e organizaÃ§Ãµes, estruturar processos claros e utilizar a tecnologia como ferramenta consciente e eficaz para resolver tais desafios.
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-acc-item">
+              <button type="button" class="ds-acc-btn" aria-expanded="false">
+                <span>Como funciona o processo de desenvolvimento de uma soluÃ§Ã£o?</span>
+                <span class="acc-cross" aria-hidden="true"></span>
+              </button>
+              <div class="ds-acc-panel">
+                <div class="ds-acc-content">
+                  O trabalho segue 5 etapas lÃ³gicas: Compreender (diagnÃ³stico da situaÃ§Ã£o), Organizar (separar causas de sintomas), Planejar (estratÃ©gia viÃ¡vel), Executar (implementaÃ§Ã£o prÃ¡tica com sistemas, processos ou capacitaÃ§Ãµes) e Evoluir (ajustes contÃ­nuos com base em resultados).
+                </div>
+              </div>
+            </div>
+
+            <div class="ds-acc-item">
+              <button type="button" class="ds-acc-btn" aria-expanded="false">
+                <span>A tecnologia Ã© sempre a resposta para os problemas apresentados?</span>
+                <span class="acc-cross" aria-hidden="true"></span>
+              </button>
+              <div class="ds-acc-panel">
+                <div class="ds-acc-content">
+                  NÃ£o. Nenhuma ferramenta resolve um problema sozinha. Muitas vezes a melhoria imediata estÃ¡ em organizar fluxos, alinhar responsabilidades ou capacitar a equipe. A tecnologia entra quando tem funÃ§Ã£o evidente e simplificadora.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BotÃ£o de Teste para o Modal -->
+        <div style="margin-top:1.5rem;">
+          <button type="button" class="btn-ghost" id="open-demo-modal">
+            Abrir Modal de PreferÃªncias de DemonstraÃ§Ã£o<span class="btn-dot"></span>
+          </button>
+        </div>
+      </article>
+
+      <!-- BADGES E TOOLTIPS -->
+      <article class="ds-spec">
+        <h3>6. Badges, Indicadores e Tooltips</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin:1.5rem 0;">
+          <span class="badge-tag coral">[ GESTÃƒO Â· EDUCAÃ‡ÃƒO Â· TECNOLOGIA ]</span>
+          <span class="badge-tag tech">[ PYTHON & APIs FUTURAS ]</span>
+          <span class="badge-tag">[ WCAG AAA CONTRASTE ]</span>
+          
+          <span class="tooltip-trigger">
+            Passe o mouse para ver o tooltip
+            <span class="tooltip-bubble">Micro-interaÃ§Ã£o de apoio com curva de aceleraÃ§Ã£o suave</span>
+          </span>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ============================================================ 04 ÃCONES -->
+    <section id="sec-icons" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 04 ]</span>
+        <h2>Biblioteca de Ãcones</h2>
+        <div class="ds-head-desc">
+          Ativos vetoriais SVG oficiais, marcas dinÃ¢micas e Ã­cones sociais.
+        </div>
+      </div>
+
+      <p class="ds-note">
+        Os Ã­cones preservam geometria vetorial limpa, espessura Ã³tica equilibrada e animaÃ§Ãµes de rotaÃ§Ã£o contÃ­nua (ex.: o asterisco oficial que gira 360Â° a cada 9 segundos enquanto visÃ­vel).
+      </p>
+
+      <div class="ds-icons-grid">
+        <!-- Asterisco SVG com RotaÃ§Ã£o 9s -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <img src="assets/overview/assets/images/sections/asterisk.svg" alt="Asterisco" class="asterisk-spin-smooth" style="filter:drop-shadow(0 0 8px var(--color-primary-glow));">
+          </div>
+          <code>sections/asterisk.svg</code>
+          <small>Giro contÃ­nuo 360Â° em 9s (marca de processo)</small>
+        </div>
+
+        <!-- Seta de Envio Send Icon -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <img src="assets/overview/assets/images/hero/send-icon.svg" alt="Send Icon" style="filter:invert(1);">
+          </div>
+          <code>hero/send-icon.svg</code>
+          <small>Tile de CTA e navegaÃ§Ã£o de avanÃ§o</small>
+        </div>
+
+        <!-- Logo Monograma Oficial -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <img src="assets/overview/assets/images/hero/logo.svg" alt="Logo">
+          </div>
+          <code>hero/logo.svg</code>
+          <small>Logotipo e estrela de 8 pontas</small>
+        </div>
+
+        <!-- Marcador de FAQ (+ que gira 45Â°) -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <div style="width:20px;height:20px;position:relative;">
+              <span style="position:absolute;top:50%;left:0;width:100%;height:2px;background:var(--color-primary);transform:translateY(-50%);"></span>
+              <span style="position:absolute;left:50%;top:0;height:100%;width:2px;background:var(--color-primary);transform:translateX(-50%);"></span>
+            </div>
+          </div>
+          <code>acc-cross-icon</code>
+          <small>Plus / Cruz rotativa a 45Â° no acordeÃ£o</small>
+        </div>
+
+        <!-- Barras de Menu Mobile HambÃºrguer -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <div style="width:24px;height:14px;position:relative;display:flex;flex-direction:column;justify-content:space-between;">
+              <span style="height:2px;background:#fff;border-radius:1px;"></span>
+              <span style="height:2px;background:#fff;border-radius:1px;"></span>
+            </div>
+          </div>
+          <code>menu-bars-2x</code>
+          <small>Duas linhas que convergem em X no mobile</small>
+        </div>
+
+        <!-- WhatsApp SVG -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </div>
+          <code>whatsapp-contact</code>
+          <small>Canal direto wa.me/5567999721850</small>
+        </div>
+
+        <!-- LinkedIn SVG -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-hover)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </div>
+          <code>linkedin-channel</code>
+          <small>Perfil profissional de Marcus Rolim</small>
+        </div>
+
+        <!-- E-mail SVG -->
+        <div class="ds-icon-box">
+          <div class="ds-icon-stage">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </div>
+          <code>mail-envelope</code>
+          <small>contato@marcusrolim.com.br</small>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ 05 ANIMAÃ‡Ã•ES & MOTION -->
+    <section id="sec-motion" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 05 ]</span>
+        <h2>Motion & AnimaÃ§Ãµes</h2>
+        <div class="ds-head-desc">
+          LaboratÃ³rio interativo de curvas, surgimentos e transiÃ§Ãµes orgÃ¢nicas.
+        </div>
+      </div>
+
+      <p class="ds-note">
+        <strong>Diretriz de AnimaÃ§Ãµes:</strong> Permitidas somente animaÃ§Ãµes discretas e funcionais que valorizem a clareza e nunca distraiam da leitura. Suporte integral a <code>prefers-reduced-motion</code>. Todas as curvas utilizam quintic easing suave (<code>cubic-bezier(0.22, 1, 0.36, 1)</code>).
+      </p>
+
+      <div class="ds-motion-grid">
+        <!-- Letter Reveal -->
+        <div class="motion-card" data-motion-type="letter">
+          <div>
+            <h4 style="margin:0 0 0.5rem;font-size:16px;color:#fff;">1. Letter Reveal (Surgimento de Letras)</h4>
+            <p style="font-size:12px;color:var(--color-text-muted);margin:0 0 1rem;">
+              Aplicado a tÃ­tulos principais (H1 e H2). Letra a letra com blur 12px â†’ 0 e stagger de 26ms.
+            </p>
+          </div>
+          <div class="motion-card-preview">
+            <h3 class="anim-sample-text" style="font-family:var(--font-general);font-size:clamp(22px, 2.5vw, 32px);font-weight:300;margin:0;color:#fff;">
+              CompreensÃ£o do problema
+            </h3>
+          </div>
+          <button type="button" class="motion-replay-btn">Replay AnimaÃ§Ã£o â†º</button>
+        </div>
+
+        <!-- Word Reveal -->
+        <div class="motion-card" data-motion-type="word">
+          <div>
+            <h4 style="margin:0 0 0.5rem;font-size:16px;color:#fff;">2. Word Reveal (Surgimento de Palavras)</h4>
+            <p style="font-size:12px;color:var(--color-text-muted);margin:0 0 1rem;">
+              Aplicado a parÃ¡grafos e taglines. TranslaÃ§Ã£o Y 16px â†’ 0, blur 8px â†’ 0 com stagger de 42ms.
+            </p>
+          </div>
+          <div class="motion-card-preview">
+            <p class="anim-sample-text" style="font-family:var(--font-sans);font-size:15px;line-height:1.5;margin:0;color:var(--color-text-muted);text-align:center;">
+              A tecnologia deve aparecer como ferramenta para resolver problemas.
+            </p>
+          </div>
+          <button type="button" class="motion-replay-btn">Replay AnimaÃ§Ã£o â†º</button>
+        </div>
+
+        <!-- Unit Reveal -->
+        <div class="motion-card" data-motion-type="unit">
+          <div>
+            <h4 style="margin:0 0 0.5rem;font-size:16px;color:#fff;">3. Unit Reveal (Tags e Blocos de AÃ§Ã£o)</h4>
+            <p style="font-size:12px;color:var(--color-text-muted);margin:0 0 1rem;">
+              Entrada em bloco com elevaÃ§Ã£o Y 20px â†’ 0 e desfoque suave de 10px â†’ 0 em 1000ms.
+            </p>
+          </div>
+          <div class="motion-card-preview">
+            <div class="anim-sample-unit">
+              <span class="badge-tag coral">[ GESTÃƒO Â· EDUCAÃ‡ÃƒO Â· TECNOLOGIA ]</span>
+            </div>
+          </div>
+          <button type="button" class="motion-replay-btn">Replay AnimaÃ§Ã£o â†º</button>
+        </div>
+
+        <!-- Mask Reveal -->
+        <div class="motion-card" data-motion-type="mask">
+          <div>
+            <h4 style="margin:0 0 0.5rem;font-size:16px;color:#fff;">4. Mask Reveal (RevelaÃ§Ã£o de MÃ¡scara)</h4>
+            <p style="font-size:12px;color:var(--color-text-muted);margin:0 0 1rem;">
+              Clip-path gradual <code>inset(0 0 100% 0) â†’ inset(0 0 0% 0)</code> em 1200ms para imagens.
+            </p>
+          </div>
+          <div class="motion-card-preview">
+            <div class="anim-sample-mask" style="width:140px;height:90px;border-radius:6px;overflow:hidden;position:relative;">
+              <img src="assets/overview/assets/images/sections/financial.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+          <button type="button" class="motion-replay-btn">Replay AnimaÃ§Ã£o â†º</button>
+        </div>
+      </div>
+
+      <!-- Canvas Star-Fall PartÃ­culas -->
+      <div class="ds-spec" style="margin-top:3.5rem;">
+        <h3>5. Canvas Star-Fall (PartÃ­culas em Queda com Paleta MR)</h3>
+        <p class="ds-note">
+          140 partÃ­culas caindo em Ã¢ngulo suave (âˆ’0.32 rad) com rastro translÃºcido nas tonalidades do ecossistema: Coral (<code>#FF695B</code>), Ciano TecnolÃ³gico (<code>#5CC0E6</code>) e ArdÃ³sia (<code>#3A7CA5</code>).
+        </p>
+        <div class="starfall-container">
+          <canvas id="starfall-canvas" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ 06 SUPERFÃCIES & FUNDOS -->
+    <section id="sec-surfaces" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 06 ]</span>
+        <h2>SuperfÃ­cies & Fundos</h2>
+        <div class="ds-head-desc">
+          ConstruÃ§Ã£o de profundidade sem excesso de gradientes ou neons.
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
+        <!-- Barra de Vidro -->
+        <div style="height:140px;position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--border-hairline);background:url('assets/overview/assets/images/sections/financial.png') center/cover;">
+          <div style="position:absolute;inset:10px;background:rgba(18,18,18,0.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--border-subtle);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-tag);font-size:12px;text-transform:uppercase;color:#fff;">
+            Glass Bar (Header / CTA)
+          </div>
+        </div>
+
+        <!-- SuperfÃ­cie Elevation Card -->
+        <div style="height:140px;background:var(--color-surface);border:1px solid var(--border-subtle);border-radius:10px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;">
+          <strong style="font-size:14px;color:#fff;">Elevation Surface</strong>
+          <code style="font-size:11px;color:var(--color-text-subtle);">#2E2E2E com borda 1px</code>
+        </div>
+
+        <!-- Fundo Deep Void -->
+        <div style="height:140px;background:#0A0A0A;border:1px solid var(--border-hairline);border-radius:10px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;">
+          <strong style="font-size:14px;color:#fff;">Canvas Deep Void</strong>
+          <code style="font-size:11px;color:var(--color-text-subtle);">#0A0A0A / #121212</code>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ 07 CENA 3D & OVERVIEW INTEGRATION -->
+    <section id="sec-3d-stage" class="ds-group ds-section-glow">
+      <div class="ds-head">
+        <span>[ 07 ]</span>
+        <h2>Cena 3D & IntegraÃ§Ã£o Overview</h2>
+        <div class="ds-head-desc">
+          Acesso opcional e em tempo real Ã  cena 3D interativa de Vesper.
+        </div>
+      </div>
+
+      <p class="ds-note">
+        Para fins de referÃªncia tÃ©cnica e testes de transiÃ§Ã£o de scroll, o visualizador abaixo conecta-se diretamente Ã  cena Three.js/R3F do repositÃ³rio (Orb, Galaxy, Brain e Outro) via bridge de iframe controlado por mensagens postMessage.
+      </p>
+
+      <div style="position:relative;height:min(70vh, 520px);border:1px solid var(--border-subtle);border-radius:12px;overflow:hidden;background:#000;box-shadow:0 20px 50px rgba(0,0,0,0.8);">
+        <iframe id="vesper-stage-frame" src="assets/overview/index.html" title="Vesper Overview 3D Live Stage" style="width:100%;height:100%;border:none;display:block;"></iframe>
+      </div>
+
+      <!-- Controles de EstaÃ§Ã£o da Cena 3D -->
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1.25rem;" id="stage-station-bar">
+        <button type="button" class="btn-ghost" data-stage-station="0" style="height:38px;font-size:13px;">[ 00 ] Orb Hero</button>
+        <button type="button" class="btn-ghost" data-stage-station="1" style="height:38px;font-size:13px;">[ 01 ] Galaxy Disc</button>
+        <button type="button" class="btn-ghost" data-stage-station="2" style="height:38px;font-size:13px;">[ 02 ] Brain Synapses</button>
+        <button type="button" class="btn-ghost" data-stage-station="3" style="height:38px;font-size:13px;">[ 03 ] Burst Outro</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================================================================ MODAL DIÃLOGO DE DEMONSTRAÃ‡ÃƒO -->
+<div class="ds-modal-backdrop" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="ds-modal-box">
+    <div class="ds-modal-header">
+      <h3 id="modal-title">PreferÃªncias de Privacidade</h3>
+      <button type="button" class="btn-icon" id="close-demo-modal" aria-label="Fechar diÃ¡logo" style="width:32px;height:32px;">
+        âœ•
+      </button>
+    </div>
+    <div class="ds-modal-body">
+      <p>
+        Este portal prioriza a transparÃªncia e o uso consciente de dados. Selecione as categorias de cookies desejadas. As informaÃ§Ãµes coletadas nÃ£o constroem perfis comerciais.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div class="ds-switch-row" style="padding:0.75rem 1rem;">
+          <span style="font-size:13px;color:#fff;">Cookies Estritamente NecessÃ¡rios</span>
+          <button type="button" class="ds-switch-btn is-active" disabled style="opacity:0.6;"><span class="ds-switch-knob"></span></button>
+        </div>
+        <div class="ds-switch-row" style="padding:0.75rem 1rem;">
+          <span style="font-size:13px;color:#fff;">MÃ©tricas de Leitura e Performance</span>
+          <button type="button" class="ds-switch-btn is-active" data-switch><span class="ds-switch-knob"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="ds-modal-footer">
+      <button type="button" class="btn-ghost" id="cancel-demo-modal" style="height:40px;padding:0 1.25rem;font-size:13px;">
+        Rejeitar NÃ£o Essenciais
+      </button>
+      <button type="button" class="btn-cta-tile" id="save-demo-modal" style="height:40px;">
+        <span class="cta-label" style="height:40px;padding:0 1.25rem;font-size:13px;">Salvar PreferÃªncias</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     SCRIPTS & MOTOR INTERATIVO
+     - Canvas da Rede TecnolÃ³gica (Circuits & Connected Nodes)
+     - Motor Star-Fall adaptado para paleta MR
+     - Replay de AnimaÃ§Ãµes (Letter, Word, Unit, Mask)
+     - Scroll-Spy na Sidebar
+     - FAQ e Modais
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // 1. AtualizaÃ§Ã£o dinÃ¢mica do ano no rodapÃ©
+  var yr = document.getElementById('footer-year');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // 2. CANVAS INTERATIVO HERO (Rede de ConexÃµes e Pulso TecnolÃ³gico Marcus Rolim)
+  (function initHeroNetwork() {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var w, h, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var particles = [];
+    var PARTICLE_COUNT = 55;
+    var mouse = { x: -1000, y: -1000, radius: 150 };
+
+    function resize() {
+      w = canvas.parentElement.clientWidth;
+      h = canvas.parentElement.clientHeight;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    // Rastrear mouse no hero
+    canvas.parentElement.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    }, { passive: true });
+    canvas.parentElement.addEventListener('mouseleave', function() {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    // CriaÃ§Ã£o dos nÃ³s
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 2.2 + 1.2,
+        isCoral: Math.random() > 0.45 // 55% Coral, 45% Tech Blue
+      });
+    }
+
+    function animateNetwork() {
+      ctx.clearRect(0, 0, w, h);
+
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        // ReaÃ§Ã£o ao mouse
+        var dx = mouse.x - p.x;
+        var dy = mouse.y - p.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          var angle = Math.atan2(dy, dx);
+          p.x -= Math.cos(angle) * 0.8;
+          p.y -= Math.sin(angle) * 0.8;
+        }
+
+        // Desenhar nÃ³
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.isCoral ? 'rgba(255, 105, 91, 0.75)' : 'rgba(58, 124, 165, 0.8)';
+        ctx.fill();
+
+        // Conectar nÃ³s prÃ³ximos
+        for (var j = i + 1; j < particles.length; j++) {
+          var p2 = particles[j];
+          var ndx = p.x - p2.x;
+          var ndy = p.y - p2.y;
+          var ndist = Math.sqrt(ndx * ndx + ndy * ndy);
+
+          if (ndist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            var alpha = (1 - ndist / 130) * 0.22;
+            ctx.strokeStyle = p.isCoral 
+              ? 'rgba(255, 105, 91, ' + alpha + ')' 
+              : 'rgba(58, 124, 165, ' + alpha + ')';
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateNetwork);
+    }
+    animateNetwork();
+  })();
+
+  // 3. CANVAS STAR-FALL (Paleta MR: Coral â†’ Ciano â†’ Azul TÃ©cnico)
+  (function initStarfall() {
+    var sfCanvas = document.getElementById('starfall-canvas');
+    if (!sfCanvas) return;
+    var ctx = sfCanvas.getContext('2d');
+    var ANGLE = -0.32;
+    var dx = Math.sin(ANGLE), dy = Math.cos(ANGLE);
+    var STAR_COUNT = 110;
+    var GRAD = [
+      [255, 105, 91],  // Coral #FF695B
+      [92, 192, 230],  // Cyan #5CC0E6
+      [58, 124, 165]   // Tech Blue #3A7CA5
+    ];
+    var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function sampleGrad(t) {
+      var scaled = Math.min(Math.max(t, 0), 1) * (GRAD.length - 1);
+      var i = Math.min(Math.floor(scaled), GRAD.length - 2), f = scaled - i;
+      var a = GRAD[i], b = GRAD[i + 1];
+      return [Math.round(a[0] + (b[0] - a[0]) * f), Math.round(a[1] + (b[1] - a[1]) * f), Math.round(a[2] + (b[2] - a[2]) * f)];
+    }
+
+    function resizeSf() {
+      w = sfCanvas.clientWidth;
+      h = sfCanvas.clientHeight;
+      sfCanvas.width = Math.floor(w * dpr);
+      sfCanvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeSf();
+    window.addEventListener('resize', resizeSf, { passive: true });
+
+    var stars = [];
+    function spawn(star, initial) {
+      star.z = Math.random();
+      star.seed = Math.random();
+      var c = sampleGrad(star.seed);
+      star.r = c[0]; star.g = c[1]; star.b = c[2];
+      star.x = Math.random() * (w + h * Math.abs(dx)) - h * Math.abs(dx) * 0.5;
+      star.y = initial ? Math.random() * h : -Math.random() * h * 0.4 - 20;
+    }
+    for (var n = 0; n < STAR_COUNT; n++) {
+      var s = {}; spawn(s, true); stars.push(s);
+    }
+
+    var lastTime = performance.now();
+    function tickSf() {
+      var now = performance.now();
+      var delta = Math.min((now - lastTime) / 1000, 0.05);
+      lastTime = now;
+
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+      ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'lighter';
+
+      for (var i = 0; i < stars.length; i++) {
+        var star = stars[i];
+        var depth = 0.25 + star.z * 0.75;
+        var speed = (120 + depth * 550) * 0.75;
+        var step = speed * delta;
+        var px = star.x, py = star.y;
+        star.x += dx * step;
+        star.y += dy * step;
+
+        var len = step * 1.5;
+        var tailX = px - dx * len;
+        var tailY = py - dy * len;
+        var alpha = (0.15 + depth * 0.6);
+
+        var grad = ctx.createLinearGradient(tailX, tailY, star.x, star.y);
+        grad.addColorStop(0, 'rgba(' + star.r + ',' + star.g + ',' + star.b + ',0)');
+        grad.addColorStop(1, 'rgba(' + star.r + ',' + star.g + ',' + star.b + ',' + alpha.toFixed(3) + ')');
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 0.6 + depth * 1.2;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(star.x, star.y);
+        ctx.stroke();
+
+        if (star.y - len > h || star.x < -h || star.x > w + h) {
+          spawn(star, false);
+        }
+      }
+      ctx.globalCompositeOperation = 'source-over';
+      requestAnimationFrame(tickSf);
+    }
+    tickSf();
+  })();
+
+  // 4. LABORATÃ“RIO DE ANIMAÃ‡Ã•ES & REPLAY
+  function triggerAnimation(card) {
+    var type = card.dataset.motionType;
+    if (type === 'letter') {
+      var h3 = card.querySelector('.anim-sample-text');
+      var original = h3.getAttribute('data-original') || h3.textContent.trim();
+      h3.setAttribute('data-original', original);
+      h3.innerHTML = '';
+      var chars = original.split('');
+      chars.forEach(function(ch, idx) {
+        var span = document.createElement('span');
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        span.style.display = 'inline-block';
+        span.style.opacity = '0';
+        span.style.filter = 'blur(12px)';
+        span.style.transition = 'opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) ' + (idx * 26) + 'ms, filter 0.9s cubic-bezier(0.22, 1, 0.36, 1) ' + (idx * 26) + 'ms';
+        h3.appendChild(span);
+      });
+      void h3.offsetWidth;
+      h3.querySelectorAll('span').forEach(function(sp) {
+        sp.style.opacity = '1';
+        sp.style.filter = 'blur(0px)';
+      });
+    } else if (type === 'word') {
+      var p = card.querySelector('.anim-sample-text');
+      var originalP = p.getAttribute('data-original') || p.textContent.trim();
+      p.setAttribute('data-original', originalP);
+      p.innerHTML = '';
+      var words = originalP.split(/\s+/);
+      words.forEach(function(wrd, idx) {
+        var span = document.createElement('span');
+        span.textContent = wrd;
+        span.style.display = 'inline-block';
+        span.style.marginRight = '0.28em';
+        span.style.opacity = '0';
+        span.style.filter = 'blur(8px)';
+        span.style.transform = 'translateY(16px)';
+        span.style.transition = 'opacity 1s cubic-bezier(0.22, 1, 0.36, 1) ' + (idx * 42) + 'ms, filter 1s cubic-bezier(0.22, 1, 0.36, 1) ' + (idx * 42) + 'ms, transform 1s cubic-bezier(0.22, 1, 0.36, 1) ' + (idx * 42) + 'ms';
+        p.appendChild(span);
+      });
+      void p.offsetWidth;
+      p.querySelectorAll('span').forEach(function(sp) {
+        sp.style.opacity = '1';
+        sp.style.filter = 'blur(0px)';
+        sp.style.transform = 'translateY(0px)';
+      });
+    } else if (type === 'unit') {
+      var unit = card.querySelector('.anim-sample-unit');
+      unit.style.transition = 'none';
+      unit.style.opacity = '0';
+      unit.style.filter = 'blur(10px)';
+      unit.style.transform = 'translateY(20px)';
+      void unit.offsetWidth;
+      unit.style.transition = 'all 1s cubic-bezier(0.22, 1, 0.36, 1)';
+      unit.style.opacity = '1';
+      unit.style.filter = 'blur(0px)';
+      unit.style.transform = 'translateY(0px)';
+    } else if (type === 'mask') {
+      var maskImg = card.querySelector('.anim-sample-mask img');
+      maskImg.style.transition = 'none';
+      maskImg.style.clipPath = 'inset(0 0 100% 0)';
+      void maskImg.offsetWidth;
+      maskImg.style.transition = 'clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+      maskImg.style.clipPath = 'inset(0 0 0% 0)';
+    }
+  }
+
+  document.querySelectorAll('.motion-card').forEach(function(card) {
+    triggerAnimation(card);
+    var btn = card.querySelector('.motion-replay-btn');
+    if (btn) btn.addEventListener('click', function() { triggerAnimation(card); });
+  });
+
+  // 5. ACORDEÃƒO FAQ INTERATIVO
+  document.querySelectorAll('.ds-acc-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.ds-acc-item');
+      var wasOpen = item.classList.contains('is-open');
+      // Fechar outros
+      document.querySelectorAll('.ds-acc-item').forEach(function(i) {
+        i.classList.remove('is-open');
+        var b = i.querySelector('.ds-acc-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // 6. TOGGLES & SWITCHES
+  document.querySelectorAll('[data-switch]').forEach(function(sw) {
+    sw.addEventListener('click', function() {
+      sw.classList.toggle('is-active');
+    });
+  });
+
+  // 7. MODAL DE DEMONSTRAÃ‡ÃƒO
+  var modalBackdrop = document.getElementById('demo-modal');
+  var openModalBtn = document.getElementById('open-demo-modal');
+  var closeModalBtn = document.getElementById('close-demo-modal');
+  var cancelModalBtn = document.getElementById('cancel-demo-modal');
+  var saveModalBtn = document.getElementById('save-demo-modal');
+
+  function openModal() { if (modalBackdrop) modalBackdrop.classList.add('is-visible'); }
+  function closeModal() { if (modalBackdrop) modalBackdrop.classList.remove('is-visible'); }
+
+  if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (cancelModalBtn) cancelModalBtn.addEventListener('click', closeModal);
+  if (saveModalBtn) saveModalBtn.addEventListener('click', function() {
+    alert('ConfiguraÃ§Ãµes de privacidade atualizadas com sucesso!');
+    closeModal();
+  });
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', function(e) {
+      if (e.target === modalBackdrop) closeModal();
+    });
+  }
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('is-visible')) {
+      closeModal();
+    }
+  });
+
+  // 8. CONTROLE DA CENA 3D VESPER (Bridge via PostMessage)
+  var iframe = document.getElementById('vesper-stage-frame');
+  var stationBtns = document.querySelectorAll('[data-stage-station]');
+  stationBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var station = parseInt(btn.dataset.stageStation, 10);
+      stationBtns.forEach(function(b) { b.classList.remove('btn-ghost-coral'); });
+      btn.classList.add('btn-ghost-coral');
+      try {
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ ds: 'bg', station: station }, '*');
+        }
+      } catch(err) {}
+    });
+  });
+
+  // 9. SCROLL-SPY NA SIDEBAR
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('#mr-side a[href^="#"]');
+
+  function updateScrollSpy() {
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    var currentId = '';
+
+    sections.forEach(function(sec) {
+      var top = sec.offsetTop - 140;
+      var height = sec.offsetHeight;
+      if (scrollY >= top && scrollY < top + height) {
+        currentId = sec.getAttribute('id');
+      }
+    });
+
+    if (currentId) {
+      navLinks.forEach(function(link) {
+        if (link.getAttribute('href') === '#' + currentId) {
+          link.classList.add('is-current');
+        } else {
+          link.classList.remove('is-current');
+        }
+      });
+    }
+  }
+  window.addEventListener('scroll', updateScrollSpy, { passive: true });
+  updateScrollSpy();
+
+})();
+</script>
+</body>
+</html>
+
