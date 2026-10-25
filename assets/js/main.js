@@ -189,9 +189,11 @@
     })();
   }
 
-  // 6. Manipulação do Formulário de Contato
+  // 6. Manipulação do Formulário de Contato (Web3Forms)
   var contactForm = document.getElementById('mr-contact-form');
   var formFeedback = document.getElementById('form-feedback');
+  var submitBtn = document.getElementById('contact-submit-btn');
+  var submitLabel = document.getElementById('contact-submit-label');
 
   if (contactForm && formFeedback) {
     contactForm.addEventListener('submit', function (e) {
@@ -202,16 +204,53 @@
       var messageInput = document.getElementById('contact-message');
 
       if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
+        formFeedback.className = 'form-feedback is-error';
+        formFeedback.textContent = 'Por favor, preencha todos os campos obrigatórios (*).';
+        formFeedback.style.display = 'block';
         return;
       }
 
-      // Simulação de envio com feedback limpo e acessível
-      formFeedback.className = 'form-feedback is-success';
-      formFeedback.textContent = 'Obrigado pelo contato, ' + nameInput.value.trim() + '. Sua mensagem foi registrada e retornarei em breve.';
-      formFeedback.style.display = 'block';
+      // Estado de carregamento
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitLabel) submitLabel.textContent = 'Enviando...';
+      formFeedback.style.display = 'none';
 
-      contactForm.reset();
+      var formData = new FormData(contactForm);
+      var object = Object.fromEntries(formData);
+      var json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        if (data.success) {
+          formFeedback.className = 'form-feedback is-success';
+          formFeedback.textContent = 'Obrigado pelo contato, ' + nameInput.value.trim() + '! Sua mensagem foi enviada com sucesso e retornarei em breve.';
+          formFeedback.style.display = 'block';
+          contactForm.reset();
+        } else {
+          formFeedback.className = 'form-feedback is-error';
+          formFeedback.textContent = data.message || 'Ocorreu um erro ao enviar. Por favor, tente novamente ou use o WhatsApp direto.';
+          formFeedback.style.display = 'block';
+        }
+      })
+      .catch(function () {
+        formFeedback.className = 'form-feedback is-error';
+        formFeedback.textContent = 'Não foi possível enviar no momento. Por favor, tente novamente ou use nossos canais diretos.';
+        formFeedback.style.display = 'block';
+      })
+      .finally(function () {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = 'Enviar mensagem';
+      });
     });
   }
 

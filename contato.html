@@ -95,7 +95,11 @@
               Descreva brevemente a situação ou o desafio que gostaria de compartilhar.
             </p>
 
-            <form id="mr-contact-form" novalidate>
+            <form id="mr-contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <input type="hidden" name="access_key" value="6ac43fca-a095-40e8-9db7-5eb1b78592c0">
+              <input type="hidden" name="from_name" value="Marcus Rolim - Site">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
               <div class="form-group">
                 <label for="contact-name">Seu nome ou organização *</label>
                 <input type="text" id="contact-name" name="name" class="form-control" placeholder="Como prefere ser chamado?" required>
@@ -110,12 +114,12 @@
                 <label for="contact-subject">Em qual situação posso ajudar?</label>
                 <select id="contact-subject" name="subject" class="form-control" style="cursor: pointer;">
                   <option value="" style="background: #181818;">Selecione o contexto principal (opcional)</option>
-                  <option value="1" style="background: #181818;">Quero entender como a tecnologia pode ser útil</option>
-                  <option value="2" style="background: #181818;">Quero melhorar ou organizar um processo</option>
-                  <option value="3" style="background: #181818;">Tenho um problema e preciso desenvolver uma solução</option>
-                  <option value="4" style="background: #181818;">Quero preparar pessoas para novas tecnologias</option>
-                  <option value="5" style="background: #181818;">Quero estruturar um projeto educacional ou tecnológico</option>
-                  <option value="outro" style="background: #181818;">Outro desafio específico</option>
+                  <option value="Quero entender como a tecnologia pode ser útil" style="background: #181818;">Quero entender como a tecnologia pode ser útil</option>
+                  <option value="Quero melhorar ou organizar um processo" style="background: #181818;">Quero melhorar ou organizar um processo</option>
+                  <option value="Tenho um problema e preciso desenvolver uma solução" style="background: #181818;">Tenho um problema e preciso desenvolver uma solução</option>
+                  <option value="Quero preparar pessoas para novas tecnologias" style="background: #181818;">Quero preparar pessoas para novas tecnologias</option>
+                  <option value="Quero estruturar um projeto educacional ou tecnológico" style="background: #181818;">Quero estruturar um projeto educacional ou tecnológico</option>
+                  <option value="Outro desafio específico" style="background: #181818;">Outro desafio específico</option>
                 </select>
               </div>
 
@@ -125,8 +129,8 @@
               </div>
 
               <div style="margin-top: 2rem;">
-                <button type="submit" class="btn-cta-tile" style="width: 100%;">
-                  <span class="cta-label" style="flex: 1; height: 50px;">Enviar mensagem</span>
+                <button type="submit" id="contact-submit-btn" class="btn-cta-tile" style="width: 100%;">
+                  <span class="cta-label" id="contact-submit-label" style="flex: 1; height: 50px;">Enviar mensagem</span>
                   <span class="cta-tile" style="height: 50px; width: 50px;">
                     <img src="assets/images/send-icon.svg" alt="" width="18" height="18" aria-hidden="true">
                   </span>
