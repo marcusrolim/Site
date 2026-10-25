@@ -15,13 +15,13 @@
 
 var FERRAMENTAS = [
   {
-    id: 'exemplo',
-    nome: 'Ferramenta de Exemplo',
-    descricao: 'Aplicação de referência publicada na VPS para validar a infraestrutura: Docker, HTTPS automático e subdomínio próprio.',
+    id: 'videoextractor',
+    nome: 'VideoExtractor Pro',
+    descricao: 'Download de vídeos da web (YouTube, redes sociais) e otimização sob medida para WhatsApp com FFmpeg, corrigindo áudio e proporção.',
     categoria: 'tecnologia',
-    stack: ['Python', 'Flask', 'Docker'],
-    url: 'https://exemplo.marcusrolim.com.br',
-    status: 'em-breve'
+    stack: ['Python', 'Flask', 'yt-dlp', 'FFmpeg', 'Docker'],
+    url: 'https://videoextractor.marcusrolim.com.br',
+    status: 'online'
   }
 ];
 
@@ -84,16 +84,34 @@ var FERRAMENTAS = [
     grid.appendChild(el('p', 'tools-empty', 'Novas ferramentas serão publicadas em breve.'));
   }
 
-  // Filtro por categoria
+  // Filtro por categoria com feedback quando vazio
   var botoes = document.querySelectorAll('.tools-filter-btn');
   botoes.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var filtro = btn.getAttribute('data-filter');
       botoes.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+
+      var visiveis = 0;
       grid.querySelectorAll('.tool-card').forEach(function (card) {
         var visivel = filtro === 'todas' || card.getAttribute('data-categoria') === filtro;
         card.hidden = !visivel;
+        if (visivel) visiveis++;
       });
+
+      var emptyMsg = document.getElementById('tools-empty-filter');
+      if (visiveis === 0) {
+        if (!emptyMsg) {
+          emptyMsg = el('p', 'tools-empty', 'Nenhuma ferramenta publicada nesta categoria por enquanto.');
+          emptyMsg.id = 'tools-empty-filter';
+          emptyMsg.style.gridColumn = '1 / -1';
+          emptyMsg.style.padding = '2rem 0';
+          emptyMsg.style.color = 'var(--color-text-subtle)';
+          grid.appendChild(emptyMsg);
+        }
+        emptyMsg.hidden = false;
+      } else if (emptyMsg) {
+        emptyMsg.hidden = true;
+      }
     });
   });
 })();
